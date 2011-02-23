@@ -1,1 +1,1 @@
-gcc src/$1.c -o bin/$1.out
+gcc src/$1.c -o bin/$1
