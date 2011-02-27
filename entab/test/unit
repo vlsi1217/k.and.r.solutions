@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+RESULT=$(cat tabs.txt | entab)
+(echo $RESULT | grep "  ") && (echo $RESULT | grep "	")

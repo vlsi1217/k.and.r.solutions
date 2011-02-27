@@ -1,2 +1,0 @@
-build $1
-bin/$1.out
