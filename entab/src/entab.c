@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define TAB 9
 #define TABWIDTH 2
 
 void print_buffer(char buffer[]);
 
-main() {
+int main() {
   int character, i = 0;
   char buffer[TABWIDTH];
 
@@ -22,6 +23,8 @@ main() {
       i++;
     }
   }
+
+  return EXIT_SUCCESS;
 }
 
 void print_buffer(char buffer[]) {

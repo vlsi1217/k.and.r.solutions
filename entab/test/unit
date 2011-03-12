@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: grep too weakassed to find tabs?
-# cat tabs.txt | entab | grep " tab"
+cat tabs.txt | entab | grep " space" && \
+cat tabs.txt | entab | grep -P "\ttab"
 
-cat tabs.txt | entab && \
-cat tabs.txt | entab | grep " space"
