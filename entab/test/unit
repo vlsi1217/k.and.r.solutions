@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-RESULT=$(cat tabs.txt | entab)
-(echo $RESULT | grep "  ") && (echo $RESULT | grep "	")
+# TODO: grep too weakassed to find tabs?
+# cat tabs.txt | entab | grep " tab"
+
+cat tabs.txt | entab && \
+cat tabs.txt | entab | grep " space"

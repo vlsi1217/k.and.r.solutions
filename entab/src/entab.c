@@ -6,24 +6,28 @@
 void print_buffer(char buffer[]);
 
 main() {
-  int i, character;
+  int character, i = 0;
   char buffer[TABWIDTH];
 
   while((character = getchar()) != EOF) {
-    for(i = 0; i < TABWIDTH; i++) {
-      buffer[i] = character;
-    }
+    buffer[i] = character;
 
-    print_buffer(buffer);
+    if(i == TABWIDTH - 1) {
+      print_buffer(buffer);
+      i = 0;
+    } else if(character == '\n') {
+      printf("\n");
+      i = 0;
+    } else {
+      i++;
+    }
   }
 }
 
 void print_buffer(char buffer[]) {
-  if(buffer[0] == ' ') {
-    if(buffer[1] == ' ') {
-      printf("%c", TAB);
-    } else {
-      printf("%s", buffer);
-    }
+  if(buffer[0] == ' ' && buffer[1] == ' ') {
+    printf("%c", TAB);
+  } else {
+    printf("%s", buffer);
   }
 }

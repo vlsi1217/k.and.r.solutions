@@ -2,3 +2,4 @@
 
 PATH=$PATH:$(pwd)/bin
 cd test && ./unit
+
