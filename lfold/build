@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gcc -g src/lfold.c -o bin/lfold

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+echo should not truncate last word
+echo 'aa bb cc dd ee ff gg' | lfold | grep 'aa bb cc dd ee ff gg' || exit -1
+
+echo should deal with single characters
+echo 'a' | lfold | grep 'a' || exit -1 
+
+echo should deal with single trailing characters
+echo ' a' | lfold | grep 'a' || exit -1 
+
+echo should not add garbage to the end of words
+echo 'this is i' | lfold | grep 'this is i' || exit -1 
+
+echo should echo everything
+echo '0 1 2 3 4 5 6 7 8 9' | lfold | grep '0 1 2 3 4 5 6 7 8 9' || exit -1 
+
+echo should wrap
+echo 'echo please wrap me. please wrap me. please wrap me. please wrap me. please wrap me. please' | lfold | test 2 = $(wc -l) || exit -1 
+
+echo should not wrap
+echo 'please wrap me. please wrap me. please wrap me. please wrap me. please wrap me.' | lfold | test 1 = $(wc -l)  || exit -1 
