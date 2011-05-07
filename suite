@@ -2,5 +2,5 @@
 
 for project in $(./list)
 do
-  (cd $project && ./build)
+  (cd $project && ./suite)
 done

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# usage
+
+if ! test $1
+  then
+    echo "USAGE: generate <name>."
+    exit 1
+fi
+
+name=$(basename $1)
+
+# directories
+
+echo creating basic structure
+mkdir -p $name/{bin,src,test}
+
+# build script
+
+echo creating build script
+echo "#!/usr/bin/env bash
+
+gcc -g src/$name.c -o bin/$name" > $name/build && chmod +x $name/build
+
+# suite script
+
+echo creating suite script
+echo "#!/usr/bin/env bash
+
+PATH=$PATH:$(pwd)/$name/bin
+cd test
+./unit && echo passed. || echo failed." > $name/suite && chmod +x $name/suite
+
+# once
+
+if ! test -f $name/test/unit
+  then
+    echo creating unit stub
+    echo "#!/usr/bin/env bash
+
+    echo should pass
+    echo foo | $name || exit 1" > $name/test/unit && chmod +x $name/test/unit
+fi
+
+if ! test -f $name/test/unit
+  then
+    echo creating program stub
+    echo "#include <stdio.h>
+
+    int main() {
+    }" > $name/src/$name.c
+fi

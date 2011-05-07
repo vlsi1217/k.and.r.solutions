@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo should pass
+echo "one two three
+four five" | 1.08 | grep "blanks: 3, tabs: 0, newlines: 1." | exit 1
