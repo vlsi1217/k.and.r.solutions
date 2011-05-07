@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-gcc src/ucontext.c -o bin/ucontext
