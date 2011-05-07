@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+    echo should pass
+    echo foo | 1.13 || exit 1

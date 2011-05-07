@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-gcc src/histogram.c -o bin/histogram
+gcc -g src/1.13.c -o bin/1.13
+echo built 1.13.

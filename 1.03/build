@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 gcc -g src/1.03.c -o bin/1.03
+echo built 1.03.

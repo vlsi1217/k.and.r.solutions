@@ -20,7 +20,9 @@ mkdir -p $name/{bin,src,test}
 echo creating build script
 echo "#!/usr/bin/env bash
 
-gcc -g src/$name.c -o bin/$name" > $name/build && chmod +x $name/build
+gcc -g src/$name.c -o bin/$name
+echo built $name." > $name/build && chmod +x $name/build
+
 
 # suite script
 
@@ -28,7 +30,7 @@ echo creating suite script
 echo "#!/usr/bin/env bash
 
 PATH=$PATH:$(pwd)/$name/bin
-cd test
+cd test > /dev/null
 ./unit && echo passed. || echo failed." > $name/suite && chmod +x $name/suite
 
 # once
