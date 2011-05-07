@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gcc -g src/1.06.c -o bin/1.06

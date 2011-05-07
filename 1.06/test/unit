@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo should print 11110 for foo – three chars plus \0 plus EOF
+echo foo | 1.06 | grep 11110 || exit 1

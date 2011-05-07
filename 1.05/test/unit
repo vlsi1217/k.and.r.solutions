@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo should pass
+exit 1

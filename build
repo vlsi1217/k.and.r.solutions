@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-test -d $1 && exit 1
+test -d $1 && echo "USAGE: build <name>" && exit 1
 
 echo creating basic structure
 mkdir -p $1/{bin,src,test}
@@ -13,7 +13,7 @@ gcc -g src/$1.c -o bin/$1" > $1/build && chmod +x $1/build
 echo creating suite script
 echo "#!/usr/bin/env bash
 
-PATH=$PATH:$(pwd)/bin
+PATH=$PATH:$(pwd)/$1/bin
 cd test 
 ./unit && echo passed. || echo failed." > $1/suite && chmod +x $1/suite
 
@@ -24,4 +24,7 @@ echo should pass
 exit 1" > $1/test/unit && chmod +x $1/test/unit
 
 echo creating program stub
-touch $1/src/$1.c
+echo "#include <stdio.h>
+
+int main() {
+}" > $1/src/$1.c
