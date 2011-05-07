@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-echo should pass
-echo "one two three
-four five" | 1.08 | grep "blanks: 3, tabs: 0, newlines: 1." | exit 1
+echo should report correct blanks, tabs and newlines.
+echo "one	two three" | 1.08 | grep "blanks: 1, tabs: 1, newlines: 1." || exit 1

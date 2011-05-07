@@ -7,6 +7,8 @@ int main() {
   putchar('z');
   putchar('A');
   putchar('Z');
+  putchar('\t');
+  putchar('\n');
   putchar('\0');
   putchar(EOF);
 }

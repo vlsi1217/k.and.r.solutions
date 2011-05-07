@@ -23,7 +23,6 @@ echo "#!/usr/bin/env bash
 gcc -g src/$name.c -o bin/$name
 echo built $name." > $name/build && chmod +x $name/build
 
-
 # suite script
 
 echo creating suite script
@@ -44,7 +43,7 @@ if ! test -f $name/test/unit
     echo foo | $name || exit 1" > $name/test/unit && chmod +x $name/test/unit
 fi
 
-if ! test -f $name/test/unit
+if ! test -f $name/src/$name.c
   then
     echo creating program stub
     echo "#include <stdio.h>
