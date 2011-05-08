@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-    echo should pass
-    echo foo | 1.09 || exit 1
+echo should collapse spaces
+echo "foo  foo" | 1.09 | grep "foo foo" || exit 1
