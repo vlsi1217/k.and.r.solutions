@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo should not have statistics for empty input
+echo -n "" | 1.11 | grep "0 0 0" || exit 1
+
+echo should count words
+echo -n " o o " | 1.11 | grep "0 2 5" || exit 1
+
+echo should count words with tabs
+echo -n "o	o " | 1.11 | grep "0 2 4" || exit 1
+
+echo should count words with newlines
+echo -n "o
+o" | 1.11 | grep "1 2 3" || exit 1
+
+echo should count newlines
+echo "" | 1.11 | grep "1 0 1" || exit 1

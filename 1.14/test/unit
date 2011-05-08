@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo should chart two os in foo
+echo foo | 1.14 | grep "o: ██" || exit 1
+
+echo should chart one f in foo
+echo foo | 1.14 | grep "f: █" || exit 1
