@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo should split words
+echo split me up | 1.12 | grep "split
+me
+up
+" || exit 1
