@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+while read -n1
+do
+  clear
+  ./build && ./suite
+done

@@ -32,6 +32,17 @@ PATH=$PATH:$(pwd)/$name/bin
 cd test > /dev/null
 ./unit && echo passed. || echo failed." > $name/suite && chmod +x $name/suite
 
+# auto
+
+echo creating auto script
+echo "#!/usr/bin/env bash
+
+while read -n1
+do
+  clear
+  ./build && ./suite
+done" > $name/auto && chmod +x $name/auto
+
 # once
 
 if ! test -f $name/test/unit

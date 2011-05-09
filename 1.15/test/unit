@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo should convert 100 farenheit to 37.8 celcius
-1.03 | grep 100 | grep 37.8 || exit 1
+1.15 | grep 100 | grep 37.8 || exit 1
