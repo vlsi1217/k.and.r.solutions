@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo should reverse a single line
+echo 123 | 1.19 | grep 321 || exit 1
+
+echo should reverse multiple lines
+echo "123
+98765432
+456" | 1.19 | grep "321
+23456789
+654
+" || exit 1

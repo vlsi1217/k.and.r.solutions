@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo should remove trailing blanks from a line
+echo "remove    
+blanks" | 1.18 | grep -P "remove
+blanks" || exit 1
+
+echo should remove trailing tabs from a line
+echo "remove	
+tabs" | 1.18 | grep -P "remove
+tabs" || exit 1
+
+echo should delete blank lines
+echo "remove
+
+blank lines" | 1.18 | grep -P "remove
+blank lines" || exit 1
+
+echo should deal with empty input
+echo | 1.18 || exit 1

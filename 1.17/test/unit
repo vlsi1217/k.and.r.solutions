@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo should print an 80 character line
+echo -n bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb | \
+  1.17 | grep "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+" || exit 1
+
+echo should truncate long lines to 80 characters
+echo -n ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccx | \
+  1.17 | grep "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+" || exit 1
+
+echo should not print a 79 char line
+echo -n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | \
+  1.17 | wc -c | xargs test 0 =

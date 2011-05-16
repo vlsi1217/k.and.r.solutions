@@ -1,18 +1,18 @@
 #include <stdio.h>
 
-#define MAXLINE 200
+#define MAXCHARS 200
 
-int getline(char line[], int maxline);
+int getline(char line[], int maxchars);
 void copy(char to[], char from[]);
 
 main() {
   int len;
   int max;
-  char line[MAXLINE];
-  char longest[MAXLINE];
+  char line[MAXCHARS];
+  char longest[MAXCHARS];
 
   max = 0;
-  while((len = getline(line, MAXLINE)) > 0) {
+  while((len = getline(line, MAXCHARS)) > 0) {
     if (len > max) {
       max = len;
       copy(longest, line);
@@ -26,29 +26,18 @@ main() {
   return 0;
 }
 
-int getline(char s[], int lim) {
-  int c, i, length;
+int getline(char line[], int maxchars) {
+  int c, length, copied;
 
-  i = 0;
-  length = 0;
+  copied = 0;
 
-  while((c = getchar()) != EOF && c != '\n') {
-    if(i < lim - 2) {
-      s[i] = c;
-      ++i;
+  for(length = 0; (c = getchar()) != EOF && c != '\0' && c != '\n'; length++) {
+    if(copied < maxchars - 1) {
+      line[copied++] = c;
     }
-
-    length++;
   }
 
-  if (c == '\n') {
-    s[i] = c;
-    ++i;
-
-    length++;
-  }
-
-  s[i] = '\0';
+  line[copied] = '\0';
   return length;
 }
 
