@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+echo should strip a c style comment
+echo "a/* strip */b" | 1.23 | tee /dev/stderr | grep ab || exit 1
+
+echo should ignore double slashes
+echo "// retain" | 1.23 | tee /dev/stderr | grep "\/\/ retain" || exit 1
+
+echo should handle quoted strings properly
+echo "\"/* retain */b\"" | 1.23 | tee /dev/stderr | grep "retain" || exit 1
+
+echo should handle character constants properly
+echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"  || exit 1
+
+echo should handle character constants properly
+echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"  || exit 1
+
+echo should ignore incorrectly opened comment
+echo "/ * retain */" | 1.23 | tee /dev/stderr | grep "retain"  || exit 1
+
+echo should ignore incorrectly closed comment
+echo "/* comment * / strip */" | 1.23 | tee /dev/stderr | grep -v "strip"  || exit 1
