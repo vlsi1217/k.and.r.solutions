@@ -28,19 +28,22 @@ echo built $name." > $name/build && chmod +x $name/build
 echo creating suite script
 echo "#!/usr/bin/env bash
 
-PATH=$PATH:$(pwd)/$name/bin
+PATH=\$PATH:\$(pwd)/bin:.
+
 cd test > /dev/null
-./unit && echo passed. || echo failed." > $name/suite && chmod +x $name/suite
+unit && echo passed. || echo failed." > $name/suite && chmod +x $name/suite
 
 # auto
 
 echo creating auto script
 echo "#!/usr/bin/env bash
 
+PATH=\$PATH:.
+
 while read -n1
 do
   clear
-  ./build && ./suite
+  build && suite
 done" > $name/auto && chmod +x $name/auto
 
 # once
@@ -59,6 +62,6 @@ if ! test -f $name/src/$name.c
     echo creating program stub
     echo "#include <stdio.h>
 
-    int main() {
-    }" > $name/src/$name.c
+int main() {
+}" > $name/src/$name.c
 fi

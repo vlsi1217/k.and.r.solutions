@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+PATH=$PATH:.
+
 while read -n1
 do
   clear
-  ./build && ./suite
+  build && suite
 done

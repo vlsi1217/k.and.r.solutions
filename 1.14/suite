@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-PATH=/Users/purzelrakete/.rvm/gems/ruby-1.9.2-p136/bin:/Users/purzelrakete/.rvm/gems/ruby-1.9.2-p136@global/bin:/Users/purzelrakete/.rvm/rubies/ruby-1.9.2-p136/bin:/Users/purzelrakete/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin:/opt/racket/bin:/Users/purzelrakete/Projects/third-party/go/bin:/Users/purzelrakete/.svm/scalas/scala-2.7.4.final/bin:/usr/local/share/npm/bin:/Users/purzelrakete/.node_libraries/bin:/Users/purzelrakete/.ec2/bin:/opt/local/lib/erlang/lib/rabbitmq_server-1.4.0/sbin:/usr/local/mysql/bin/:/usr/local/Cellar/ec2-api-tools/1.4.2.2/jars/bin:/Users/purzelrakete/Projects/rany/learning/c/1.14/bin
+PATH=$PATH:$(pwd)/bin:.
+
 cd test > /dev/null
-./unit && echo passed. || echo failed.
+unit && echo passed. || echo failed.
