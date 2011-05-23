@@ -18,10 +18,7 @@ int main() {
   int state = CODE;
   int character, last;
 
-  while((last = character) && (character = getchar())) {
-    if(character == EOF) {
-      return 0;
-    }
+  while((last = character) && (character = getchar()) && character != EOF) {
 
     // code state
 
@@ -91,5 +88,5 @@ int main() {
     }
   }
 
-  return 1; // should never arrive here.
+  return 0;
 }
