@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-for project in $(./list); do ./generate $project; done
+PATH=$PATH:.
+
+for project in $(list); do generate $project; done

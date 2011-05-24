@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-for project in $(./list)
+PATH=$PATH:.
+
+for project in $(list)
 do
-  (cd $project > /dev/null && ./build)
+  (cd $project > /dev/null && build)
 done
