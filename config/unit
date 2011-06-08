@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "${name} aspect foo"
+
+it_should_pass() {
+  ${name}
+}
+

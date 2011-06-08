@@ -7,3 +7,4 @@ do
   clear
   build && suite
 done
+

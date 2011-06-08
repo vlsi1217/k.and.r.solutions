@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-find . -type d -maxdepth 1 -mindepth 1 | grep -v git | xargs basename -a
+find . -type d -maxdepth 1 -mindepth 1 | grep -v .git | grep -v config | xargs basename -a

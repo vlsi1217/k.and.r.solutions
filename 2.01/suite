@@ -2,5 +2,5 @@
 
 PATH=$PATH:$(pwd)/bin:.
 
-cd test > /dev/null && $(ls | grep -v helpers)
+cd test && $(ls | grep -v helpers)
 

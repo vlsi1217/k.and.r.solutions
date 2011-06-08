@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+gcc -g src/${name}.c -o bin/${name}
+echo built ${name}.
+

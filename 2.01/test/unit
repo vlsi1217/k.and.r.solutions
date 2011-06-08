@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "2.01 aspect foo"
+
+it_should_pass() {
+  2.01
+}
+

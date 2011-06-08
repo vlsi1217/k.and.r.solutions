@@ -9,6 +9,12 @@ if ! test $1
 fi
 
 name=$(basename $1)
+auto=$name/auto
+build=$name/build
+helpers=$name/test/helpers
+src=$name/src/$name.c
+suite=$name/suite
+unit=$name/test/unit
 
 # directories
 
@@ -18,50 +24,37 @@ mkdir -p $name/{bin,src,test}
 # build script
 
 echo creating build script
-echo "#!/usr/bin/env bash
-
-gcc -g src/$name.c -o bin/$name
-echo built $name." > $name/build && chmod +x $name/build
+cp config/build $build
+sed -i '' "s/\${name}/$name/g" $build
 
 # suite script
 
 echo creating suite script
-echo "#!/usr/bin/env bash
-
-PATH=\$PATH:\$(pwd)/bin:.
-
-cd test > /dev/null
-unit && echo passed. || echo failed." > $name/suite && chmod +x $name/suite
+cp config/suite $suite
 
 # auto
 
 echo creating auto script
-echo "#!/usr/bin/env bash
-
-PATH=\$PATH:.
-
-while read -n1
-do
-  clear
-  build && suite
-done" > $name/auto && chmod +x $name/auto
+cp config/auto $auto
 
 # once
 
-if ! test -f $name/test/unit
+if ! test -f $helpers
+  then
+    echo creating helpers script
+    cp config/helpers $helpers
+fi
+
+if ! test -f $unit
   then
     echo creating unit stub
-    echo "#!/usr/bin/env bash
-
-    echo should pass
-    echo foo | $name || exit 1" > $name/test/unit && chmod +x $name/test/unit
+    cp config/unit $unit
+    sed -i '' "s/\${name}/$name/g" $unit
 fi
 
-if ! test -f $name/src/$name.c
+if ! test -f $src
   then
     echo creating program stub
-    echo "#include <stdio.h>
-
-int main() {
-}" > $name/src/$name.c
+    cp config/stub.c $src
 fi
+

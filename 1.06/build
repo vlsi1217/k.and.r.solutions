@@ -2,3 +2,4 @@
 
 gcc -g src/1.06.c -o bin/1.06
 echo built 1.06.
+
