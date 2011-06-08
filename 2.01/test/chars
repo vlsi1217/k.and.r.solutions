@@ -1,0 +1,14 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "c type size inspector for chars"
+
+it_should_know_unsigned_char() {
+  assert_type "unsigned char" 0 255
+}
+
+it_should_know_signed_char() { # 2s complement
+  assert_type "signed char" -128 127
+}
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function assert_type {
+  local type=$1
+  local lowest=$2
+  local highest=$3
+  local expected="$type is between $lowest and $highest"
+
+  2.01 | grep "$expected" || { 2.01 | grep -P "^$type" && false; }
+}
