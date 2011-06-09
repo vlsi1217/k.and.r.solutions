@@ -1,4 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-    echo should pass
-    echo foo | 1.04 || exit 1
+source helpers
+
+describe "celcius to farenheit table"
+
+it_should_have_12_rows() {
+  test 12 = $(1.04 | wc -l)
+}
+
+it_should_convert_50_celicius_to_58_farenheit() {
+  1.04 | grep -P "50.*58.00"
+}

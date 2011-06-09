@@ -4,6 +4,12 @@ int getline(char line[], int maxchars);
 
 #define MAX_LINE_LENGTH 80
 
+/*
+ * Write a program to print all input lines that are longer than 80
+ * characters.
+ *
+ */
+
 main() {
   int length;
   char line[MAX_LINE_LENGTH];

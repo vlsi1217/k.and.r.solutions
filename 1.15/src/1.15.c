@@ -2,6 +2,12 @@
 
 float to_celsius(float fahr);
 
+/*
+ * Rewrite the temperature conversion program of Section 1.2 to use a function
+ * for conversion.
+ *
+ */
+
 main() {
   float fahr, celsius;
   float lower, upper, step;

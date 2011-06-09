@@ -1,61 +1,82 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo Should check a C program for rudimentary syntax errors, by...
-echo
+source helpers
 
-echo detecting unmached opening parenthesis:
-echo "(" | 1.24 | grep "unclosed ( at end of file" || exit 1
+describe "Should check a C program for rudimentary syntax errors"
 
-echo detecting unmached closing parenthesis:
-echo ")" | 1.24 | grep "contains unbalanced ) at 1:1" || exit 1
+it_detects_unmached_opening_parenthesis() {
+  echo "(" | 1.24 | grep "unclosed ( at end of file"
+}
 
-echo validating matching parenthesis:
-echo "()" | 1.24 || exit 1
+it_detects_unmached_closing_parenthesis() {
+  echo ")" | 1.24 | grep "contains unbalanced ) at 1:1"
+}
 
-echo detecting unmached opening brackets:
-echo "[" | 1.24 | grep "unclosed \[ at end of file" || exit 1
+it_validates_matching_parenthesis() {
+  echo "()" | 1.24
+}
 
-echo detecting unmached closing brackets:
-echo "]" | 1.24 | grep "contains unbalanced \] at 1:1" || exit 1
+it_detects_unmached_opening_brackets() {
+  echo "[" | 1.24 | grep "unclosed \[ at end of file"
+}
 
-echo detecting unmached opening braces:
-echo "{" | 1.24 | grep "unclosed { at end of file" || exit 1
+it_detects_unmached_closing_brackets() {
+  echo "]" | 1.24 | grep "contains unbalanced \] at 1:1"
+}
 
-echo detecting unmached closing braces:
-echo "}" | 1.24 | grep "contains unbalanced } at 1:1" || exit 1
+it_detects_unmached_opening_braces() {
+  echo "{" | 1.24 | grep "unclosed { at end of file"
+}
 
-echo detecting unmached single quotes:
-echo "'" | 1.24 | grep "unclosed ' at end of file" || exit 1
+it_detects_unmached_closing_braces() {
+  echo "}" | 1.24 | grep "contains unbalanced } at 1:1"
+}
 
-echo detecting unmached double quotes:
-echo "\"" | 1.24 | grep "unclosed \" at end of file" || exit 1
+it_detects_unmached_single_quotes() {
+  echo "'" | 1.24 | grep "unclosed ' at end of file"
+}
 
-echo validating matching single quotes:
-echo "''" | 1.24 || exit 1
+it_detects_unmached_double_quotes() {
+  echo "\"" | 1.24 | grep "unclosed \" at end of file"
+}
 
-echo validating matching double quotes:
-echo "\"\"" | 1.24 || exit 1
+it_validates_matching_single_quotes() {
+  echo "''" | 1.24
+}
 
-echo validating char double quote
-echo "'\"'" | 1.24 || exit 1
+it_validates_matching_double_quotes() {
+  echo "\"\"" | 1.24 
+}
 
-echo validating escaped char single quote
-echo "'\''" | 1.24 || exit 1
+it_validates_char_double_quote() {
+  echo "'\"'" | 1.24
+}
 
-echo validating escpaped string double quote
-echo "\"\\\"\"" | 1.24 || exit 1
+it_validates_escaped_char_single_quote() {
+  echo "'\''" | 1.24
+}
 
-echo ignoring stacked tokens inside a comment
-echo "/* ignore this { */" | 1.24 || exit 1
+it_validates_escpaped_string_double_quote() {
+  echo "\"\\\"\"" | 1.24
+}
 
-echo ignoring stacked tokens inside a cpp style omment
-echo "// ignore this { " | 1.24 || exit 1
+it_ignores_stacked_tokens_inside_a_comment() {
+  echo "/* ignore this { */" | 1.24
+}
 
-echo ignoring stacked tokens inside a string
-echo "\"{\"" | 1.24 || exit 1
+it_ignores_stacked_tokens_inside_a_cpp_comment() {
+  echo "// ignore this { " | 1.24
+}
 
-echo ignoring stacked tokens inside a single quoted char
-echo "'{'" | 1.24 || exit 1
+it_ignores_stacked_tokens_inside_a_string() {
+  echo "\"{\"" | 1.24
+}
 
-echo correctly revalidating a source file already validated by a compiler
-cat ../src/1.24.c | 1.24 || exit 1
+it_ignores_stacked_tokens_inside_a_char() {
+  echo "'{'" | 1.24
+}
+
+it_revalidates_a_correct_source_file() {
+  cat ../src/1.24.c | 1.24
+}
+

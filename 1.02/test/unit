@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should pass
-exit 1
+source helpers
+
+describe "special characters"
+
+it_should_tab() {
+  1.02 | grep -P "\t"
+}

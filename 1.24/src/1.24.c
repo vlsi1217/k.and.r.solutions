@@ -20,11 +20,13 @@ int machine(int state, int c, int last);
 #define GLYPHS 3
 
 /*
- *  Checks a C file for basic syntax errors, including unbalanced tokens.
- *
- *    Example: }
+ *  Write a program to check a C program for rudimentary syntax errors like
+ *  unmatched parentheses, brackets and braces. Don't forget about quotes,
+ *  both single and double, escape sequences, and comments. (This program is
+ *  hard if you do it in full generality.)
  *
  */
+
 int main() {
   char* tokens[GLYPHS] = { "()", "{}", "[]" };
   char stack[MAX_STACK] = { '\0' };
@@ -165,3 +167,4 @@ int machine(int state, int current, int last) {
 
   return state;
 }
+

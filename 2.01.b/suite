@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-PATH=$PATH:$(pwd)/bin:.
-
-cd test && $(ls | grep -v helpers)
-

@@ -9,6 +9,7 @@ if ! test $1
 fi
 
 name=$(basename $1)
+
 auto=$name/auto
 build=$name/build
 helpers=$name/test/helpers
@@ -31,6 +32,7 @@ sed -i '' "s/\${name}/$name/g" $build
 
 echo creating suite script
 cp config/suite $suite
+sed -i '' "s/\${name}/$name/g" $suite
 
 # auto
 

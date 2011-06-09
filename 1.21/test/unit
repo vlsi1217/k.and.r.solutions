@@ -1,5 +1,14 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-cat tabs.txt | entab | grep " space" && \
-cat tabs.txt | entab | grep -P "\ttab"
+source helpers
+
+describe "entab"
+
+it_should_preserve_space() {
+  echo -e " space\ttab" | entab | grep " space"
+}
+
+it_should_entab() {
+  echo -e " space\ttab" | entab | grep -P "\ttab"
+}
 

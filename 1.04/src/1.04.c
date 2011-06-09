@@ -20,9 +20,9 @@ double to_farenheit(int celcius) {
 main() {
   int celcius;
 
-  printf("%6s %8s\n", "celcius", "farenheit");
+  printf("%s %s\n", "celcius", "farenheit");
 
   for(celcius = 0; celcius <= UPPER; celcius += STEP) {
-    printf("%6d %6.2f\n", celcius, to_farenheit(celcius));
+    printf("%7d %9.2f\n", celcius, to_farenheit(celcius));
   }
 }

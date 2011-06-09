@@ -6,6 +6,11 @@
 #define END_OF_STREAM -1
 #define MAX_WORD_LENGTH 100
 
+/*
+ * Write a program that prints its input one word per line.
+ *
+ */
+
 int main() {
   char word[MAX_WORD_LENGTH];
 

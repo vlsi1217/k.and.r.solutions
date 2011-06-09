@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-    echo should pass
-    echo foo | 1.20 || exit 1
+source helpers
+
+describe "detabber"
+
+it_should_pass() {
+  flunk
+}
+

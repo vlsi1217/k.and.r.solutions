@@ -2,5 +2,6 @@
 
 PATH=$PATH:$(pwd)/bin:.
 
-cd test && $(ls | grep -v helpers)
+echo -n '1.12: '
+cd test > /dev/null && $(ls | grep -v helpers)
 

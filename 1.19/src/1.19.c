@@ -5,6 +5,12 @@ int reverse(char line[], int length);
 
 #define MAX_LINE_LENGTH 80
 
+/*
+ *  Write a function reverse(s) that reverses the character strings. Use it
+ *  to write a program that reverses its input a line at a time.
+ *
+ */
+
 int main() {
   int length;
   char line[MAX_LINE_LENGTH];

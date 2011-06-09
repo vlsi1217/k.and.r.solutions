@@ -1,10 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo "should convert tabs to \t"
-echo "tab: 	" | 1.10 | grep "\t" || exit 1
+source helpers
 
-echo "should convert backslashes to \\"
-echo "backslash: \\" | 1.10 | grep "\\\\" || exit 1
+it_should_convert_tabs() {
+  echo "tab: 	" | 1.10 | grep "\t"
+}
 
-echo "should convert backspaces to \b"
-echo "backspace: " | 1.10 | grep "\b" || exit 1
+it_should_convert_backslashes() {
+  echo "backslash: \\" | 1.10 | grep "\\\\"
+}
+
+it_should_convert_backspaces() {
+  echo "backspace: " | 1.10 | grep "\b"
+}
+

@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should print 11110 for foo – three chars plus \0 plus EOF
-echo foo | 1.06 | grep 11110 || exit 1
+source helpers
+
+describe "EOF tester"
+
+it_should_print_11110_for_foo() { # three chars plus \0 plus EOF
+  echo foo | 1.06 | grep 11110
+}
+

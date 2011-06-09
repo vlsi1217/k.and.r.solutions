@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/*
+ * Modify the temperature conversion program to print a heading above the
+ * table.
+ *
+ */
+
 main() {
   float fahr, celsius;
   float lower, upper, step;
@@ -18,3 +24,4 @@ main() {
     fahr = fahr + step;
   }
 }
+

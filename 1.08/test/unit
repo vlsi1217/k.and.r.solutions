@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should report correct blanks, tabs and newlines.
-echo "one	two three" | 1.08 | grep "blanks: 1, tabs: 1, newlines: 1." || exit 1
+source helpers
+
+describe "whitespace counter"
+
+it_should_report_blanks_tabs_and_newlines() {
+  echo "one	two three" | 1.08 | grep "blanks: 1, tabs: 1, newlines: 1."
+}

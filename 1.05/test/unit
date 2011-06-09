@@ -1,4 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should pass
-exit 1
+describe "reverse farenheit table"
+
+it_should_have_16_rows() {
+  test 16 = $(1.05 | wc -l)
+}
+
+it_should_convert_160_farenheit_to_71_1_celcius() {
+  1.05 | grep -P "160 *71.1"
+}
+
+it_should_end_on_zero() {
+  1.05 | tail -n1 | grep -P "0 *-17.8"
+}
+

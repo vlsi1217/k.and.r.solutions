@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should convert 100 farenheit to 37.8 celcius
-1.03 | grep 100 | grep 37.8 || exit 1
+source helpers
+
+describe "celcius converter"
+
+it_should_convert_100_farenheit_to_37_8_celcius() {
+  1.03 | grep 100 | grep 37.8
+}

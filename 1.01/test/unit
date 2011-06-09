@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-    echo should pass
-    echo foo | 1.01 || exit 1
+source helpers
+
+describe "hello world"
+
+it_should_greet_the_world() {
+  1.01 | grep "hello world"
+}

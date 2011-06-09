@@ -1,7 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should split words
-echo split me up | 1.12 | grep "split
-me
-up
-" || exit 1
+source helpers
+
+describe "word splitter"
+
+it_should_split_words() {
+  echo split me up | 1.12 | grep -P "split\nme\nup\n"
+}
+

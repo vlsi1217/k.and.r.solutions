@@ -1,4 +1,18 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-    echo should pass
-    echo foo | 1.13 || exit 1
+source helpers
+
+describe "word length histogram"
+
+it_should_print_a_box_for_a_single_letter() {
+  echo "a" | 1.13 | grep "a █"
+}
+
+it_should_print_char_freq_as_boxes() {
+  echo "bbbbbbb" | 1.13 | grep "b ██████"
+}
+
+it_should_not_print_box_for_missing_character() {
+  echo "" | 1.13 | grep "c "
+}
+

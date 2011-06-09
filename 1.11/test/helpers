@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-flunk() {
-  false
+assert_counts() {
+  local input=$1
+  local lines=$2
+  local words=$3
+  local chars=$4
+
+  echo -en "$input" | 1.11 | grep "$lines $words $chars" || {
+    echo -en "$input" | 1.11 && false;
+  }
 }
 

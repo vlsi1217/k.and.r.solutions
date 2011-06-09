@@ -1,20 +1,21 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should remove trailing blanks from a line
-echo "remove    
-blanks" | 1.18 | grep -P "remove
-blanks" || exit 1
+source helpers
 
-echo should remove trailing tabs from a line
-echo "remove	
-tabs" | 1.18 | grep -P "remove
-tabs" || exit 1
+describe "whitespace cleaner"
 
-echo should delete blank lines
-echo "remove
+it_should_remove_trailing_blanks_from_a_line() {
+  echo -e "remove   \nblanks" | 1.18 | grep -P "remove\nblanks"
+}
 
-blank lines" | 1.18 | grep -P "remove
-blank lines" || exit 1
+it_should_remove_trailing_tabs_from_a_line() {
+  echo -e "remove\t\ntabs" | 1.18 | grep -P "remove\ntabs"
+}
 
-echo should deal with empty input
-echo | 1.18 || exit 1
+it_should_delete_blank_lines() {
+  echo -e "remove\n\nblank lines" | 1.18 | grep -P "remove\nblank lines"
+}
+
+it_should_deal_with_empty_input() {
+  echo | 1.18
+}

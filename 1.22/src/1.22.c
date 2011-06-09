@@ -8,6 +8,14 @@
 #define MAX_WORD_LENGTH 100
 #define SPACE_WIDTH 1
 
+/*
+ * Write a program to ``fold'' long input lines into two or more shorter lines
+ * after the last non-blank character that occurs before the n-th column of
+ * input. Make sure your program does something intelligent with very long
+ * lines, and if there are no blanks or tabs before the specified column.
+ *
+ */
+
 int main() {
   int remaining = LINE_WIDTH;
   char word[MAX_WORD_LENGTH];
@@ -64,3 +72,4 @@ int buffer(char word[]) {
     index++;
   }
 }
+

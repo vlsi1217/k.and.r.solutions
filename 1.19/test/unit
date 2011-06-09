@@ -1,12 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should reverse a single line
-echo 123 | 1.19 | grep 321 || exit 1
+source helpers
 
-echo should reverse multiple lines
-echo "123
-98765432
-456" | 1.19 | grep "321
-23456789
-654
-" || exit 1
+describe "reverser"
+
+it_should_reverse_a_single_line() {
+  echo 123 | 1.19 | grep 321
+}
+
+it_should_reverse_multiple_lines() {
+  echo -e "123\n98765432\n456" | 1.19 | grep -P "321\n23456789\n654\n"
+}

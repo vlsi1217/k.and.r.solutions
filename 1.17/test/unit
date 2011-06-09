@@ -1,15 +1,25 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should print an 80 character line
-echo -n bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb | \
-  1.17 | grep "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-" || exit 1
+source helpers
 
-echo should truncate long lines to 80 characters
-echo -n ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccx | \
-  1.17 | grep "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-" || exit 1
+describe "long line printer"
 
-echo should not print a 79 char line
-echo -n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | \
-  1.17 | wc -c | xargs test 0 =
+it_should_print_an_80_char_line() {
+  echo -n bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb | \
+    1.17 | \
+    grep -P "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+}
+
+it_should_long_lines_to_80_chars() {
+  echo -n ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccx | \
+    1.17 | \
+    grep -P "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\n"
+}
+
+it_should_not_print_a_79_char_line() {
+  echo -n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | \
+    1.17 | \
+    wc -c | \
+    xargs test 0 =
+}
+

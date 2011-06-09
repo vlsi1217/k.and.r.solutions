@@ -4,5 +4,5 @@ PATH=$PATH:.
 
 for project in $(list)
 do
-  (cd $project && suite)
+  (cd $project > /dev/null && suite && echo)
 done

@@ -4,6 +4,12 @@ int getline(char line[], int maxlen);
 
 #define MAX_LINE_LENGTH 80
 
+/*
+ * Write a program to remove trailing blanks and tabs from each line of input,
+ * and to delete entirely blank lines.
+ *
+ */
+
 main() {
   int length = 0;
   char line[MAX_LINE_LENGTH];

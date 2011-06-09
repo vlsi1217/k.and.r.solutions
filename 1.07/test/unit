@@ -1,4 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should pass
-echo foo | 1.07 || exit 1
+describe "EOF tester"
+
+it_should_print_the_value_of_eof() {
+  1.07 | hexdump -C | grep "30 39 61 7a 41 5a 09 08  0a 00 ff"
+}
+

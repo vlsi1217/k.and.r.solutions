@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should collapse spaces
-echo "foo  foo" | 1.09 | grep "foo foo" || exit 1
+it_should_collapse_spaces() {
+  echo "foo  foo" | 1.09 | grep "foo foo"
+}

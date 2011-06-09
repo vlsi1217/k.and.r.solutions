@@ -1,22 +1,34 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should strip a c style comment
-echo "a/* strip */b" | 1.23 | tee /dev/stderr | grep ab || exit 1
+source helpers
 
-echo should ignore double slashes
-echo "// retain" | 1.23 | tee /dev/stderr | grep "\/\/ retain" || exit 1
+describe "comment stripper"
 
-echo should handle quoted strings properly
-echo "\"/* retain */b\"" | 1.23 | tee /dev/stderr | grep "retain" || exit 1
+it_should_strip_a_c_style_comment() {
+  echo "a/* strip */b" | 1.23 | tee /dev/stderr | grep ab
+}
 
-echo should handle character constants properly
-echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"  || exit 1
+it_should_ignore_double_slashes() {
+  echo "// retain" | 1.23 | tee /dev/stderr | grep "\/\/ retain"
+}
 
-echo should handle character constants properly
-echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"  || exit 1
+it_should_handle_quoted_strings_properly() {
+  echo "\"/* retain */b\"" | 1.23 | tee /dev/stderr | grep "retain"
+}
 
-echo should ignore incorrectly opened comment
-echo "/ * retain */" | 1.23 | tee /dev/stderr | grep "retain"  || exit 1
+it_should_handle_character_constants_properly() {
+  echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"
+}
 
-echo should ignore incorrectly closed comment
-echo "/* comment * / strip */" | 1.23 | tee /dev/stderr | grep -v "strip"  || exit 1
+it_should_handle_character_constants_properly() {
+  echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"
+}
+
+it_should_ignore_incorrectly_opened_comment() {
+  echo "/ * retain */" | 1.23 | tee /dev/stderr | grep "retain"
+}
+
+it_should_ignore_incorrectly_closed_comment() {
+  echo "/* comment * / strip */" | 1.23 | tee /dev/stderr | grep -v "strip"
+}
+

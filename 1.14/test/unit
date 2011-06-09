@@ -1,7 +1,14 @@
-#!/usr/bin/env bash
+#!/usr/bin/env roundup
 
-echo should chart two os in foo
-echo foo | 1.14 | grep "o: ██" || exit 1
+source helpers
 
-echo should chart one f in foo
-echo foo | 1.14 | grep "f: █" || exit 1
+describe "character histogram"
+
+it_should_chart_two_os_in_foo() {
+  echo foo | 1.14 | grep "o: ██"
+}
+
+it_should_chart_one_f_in_foo() {
+  echo foo | 1.14 | grep "f: █"
+}
+
