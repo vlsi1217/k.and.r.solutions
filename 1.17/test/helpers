@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 
-flunk() {
-  false
+repeat() {
+  local char=$1
+  local repeat=$2
+
+  ruby -e "$repeat.times { print '$char' }"
+}
+
+assert_length() {
+  local length=$1
+  local expected=$2
+  local input=$(repeat b $length)
+  local output=$(echo $input | 1.17)
+
+  echo $output | wc -c | xargs test $(( $expected + 1 )) = || {
+    echo $output
+    false
+  }
 }
 

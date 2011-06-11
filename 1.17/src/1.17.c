@@ -2,7 +2,8 @@
 
 int getline(char line[], int maxchars);
 
-#define MAX_LINE_LENGTH 80
+#define LINE_BUFFER 1000
+#define TRUNCATE 80
 
 /*
  * Write a program to print all input lines that are longer than 80
@@ -12,12 +13,12 @@ int getline(char line[], int maxchars);
 
 main() {
   int length;
-  char line[MAX_LINE_LENGTH];
+  char line[LINE_BUFFER];
 
   length = 0;
 
-  while((length = getline(line, MAX_LINE_LENGTH)) > 0) {
-    if(length >= MAX_LINE_LENGTH) {
+  while((length = getline(line, LINE_BUFFER)) > 0) {
+    if(length > TRUNCATE) {
       printf("%s", line);
     }
   }
@@ -38,3 +39,4 @@ int getline(char line[], int maxchars) {
   line[copied] = '\0';
   return length;
 }
+

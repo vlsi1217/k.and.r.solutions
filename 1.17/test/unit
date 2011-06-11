@@ -4,22 +4,11 @@ source helpers
 
 describe "long line printer"
 
-it_should_print_an_80_char_line() {
-  echo -n bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb | \
-    1.17 | \
-    grep -P "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+it_should_not_print_an_80_char_line() {
+  assert_length 80 0
 }
 
-it_should_long_lines_to_80_chars() {
-  echo -n ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccx | \
-    1.17 | \
-    grep -P "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\n"
-}
-
-it_should_not_print_a_79_char_line() {
-  echo -n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | \
-    1.17 | \
-    wc -c | \
-    xargs test 0 =
+it_should_print_an_81_char_line() {
+  assert_length 81 81
 }
 

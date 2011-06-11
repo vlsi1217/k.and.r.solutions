@@ -9,5 +9,5 @@ it_should_reverse_a_single_line() {
 }
 
 it_should_reverse_multiple_lines() {
-  echo -e "123\n98765432\n456" | 1.19 | grep -P "321\n23456789\n654\n"
+  echo -e "123\n98765432\n456" | 1.19 | grep "321\n23456789\n654"
 }
