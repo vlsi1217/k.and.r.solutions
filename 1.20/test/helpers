@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
-flunk() {
-  false
+spaces() {
+  local col=$1
+
+  ruby -e "($col - 1).times { print ' ' }"
+}
+
+assert_detabs_to() {
+  local expansion=$1
+  local column=$2
+  local result=$(echo "$(spaces $column)	" | 1.20)
+  local expected=$(($column + $expansion))
+
+  echo "$result" | wc -c | xargs test "$expected" = || {
+    echo failed: "${result}"
+    false
+  }
 }
 

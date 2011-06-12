@@ -1,28 +1,26 @@
 #include <stdio.h>
 
 #define TAB 9
-#define TABSTOP 2
+#define TABSTOP 4
 
 /*
  *  Write a program detab that replaces tabs in the input with the proper
  *  number of blanks to space to the next tab stop. Assume a fixed set of tab
  *  stops, say every n columns. Should n be a variable or a symbolic
- *  parameter.
+ *  parameter?
  *
  */
 
 main() {
-  int c;
-  int cursor = 0;
+  int cursor = 1;
+  int expansion = 0;
+  int i, c;
 
   while((c = getchar()) != EOF) {
-    int stopped = cursor % TABSTOP;
-
     if(c == TAB) {
-      if(stopped == 0) {
-        printf("  ");
-        cursor += 2;
-      } else {
+      expansion = TABSTOP - ((cursor - 1) % TABSTOP) - 1;
+
+      for(i = 0; i <= expansion; i++) {
         printf(" ");
         cursor++;
       }
@@ -36,4 +34,7 @@ main() {
       printf("%c", c);
     }
   }
+
+  return 0;
 }
+

@@ -2,9 +2,25 @@
 
 source helpers
 
-describe "detabber"
+describe "detab with tabstop at 4"
 
-it_should_pass() {
-  flunk
+it_should_detab_with_4_spaces_at_column_1() {
+  assert_detabs_to 4 1
+}
+
+it_should_detab_with_3_spaces_at_column_2() {
+  assert_detabs_to 3 2
+}
+
+it_should_detab_with_2_spaces_at_column_3() {
+  assert_detabs_to 2 3
+}
+
+it_should_detab_with_1_space_at_column_4() {
+  assert_detabs_to 1 4
+}
+
+it_should_detab_with_4_spaces_at_column_5() {
+  assert_detabs_to 4 5
 }
 
