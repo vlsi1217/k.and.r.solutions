@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define TAB 9
-#define TABWIDTH 2
+#define TABWIDTH 4
 
-void print_buffer(char buffer[]);
+void flush(int spaces, int column);
 
 /*
  * Write a program entab that replaces strings of blanks by the minimum number
@@ -15,31 +16,43 @@ void print_buffer(char buffer[]);
  */
 
 int main() {
-  int character, i = 0;
-  char buffer[TABWIDTH];
+  int character = 0;
+  int column = 0, spaces = 0;
 
   while((character = getchar()) != EOF) {
-    buffer[i] = character;
+    if(character == ' ') {
+      spaces++;
 
-    if(i == TABWIDTH - 1) {
-      print_buffer(buffer);
-      i = 0;
-    } else if(character == '\n') {
-      printf("\n");
-      i = 0;
     } else {
-      i++;
+      flush(spaces, column);
+      putchar(character);
+      spaces = 0;
+    }
+
+    if(character == '\n') {
+      column = 0;
+    } else {
+      column++;
     }
   }
 
   return EXIT_SUCCESS;
 }
 
-void print_buffer(char buffer[]) {
-  if(buffer[0] == ' ' && buffer[1] == ' ') {
-    printf("%c", TAB);
-  } else {
-    printf("%s", buffer);
+void flush(int spaces, int column) {
+  int i = 0;
+  int overhang = spaces - (column % TABWIDTH);
+
+  while(i < spaces) {
+    if(i < overhang) {
+      putchar('\t');
+      i += TABWIDTH; // XXX too much
+
+    } else {
+      putchar(' ');
+      i++;
+
+    }
   }
 }
 

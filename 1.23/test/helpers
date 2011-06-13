@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-flunk() {
-  false
+assert_strips() {
+  local input=$1
+  local expected=$2
+  local actual=$(echo "$input" | 1.23)
+
+  echo "$actual" | grep "$expected" || {
+    echo error for input "$input": "$actual"
+    false
+  }
 }
 

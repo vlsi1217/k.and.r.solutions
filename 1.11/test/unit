@@ -13,7 +13,7 @@ it_should_count_words() {
 }
 
 it_should_count_words_with_tabs() {
-  assert_counts "o	o " 0 2 4
+  assert_counts "o\to " 0 2 4
 }
 
 it_should_count_newlines() {

@@ -2,7 +2,17 @@
 
 PATH=$PATH:.
 
+passed=0
+
 for project in $(list)
 do
-  (cd $project > /dev/null && suite && echo)
+  (
+    echo
+    cd $project > /dev/null
+    suite
+
+  ) || passed=1
 done
+
+echo
+test $passed -eq 0

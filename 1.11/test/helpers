@@ -6,8 +6,9 @@ assert_counts() {
   local words=$3
   local chars=$4
 
-  echo -en "$input" | 1.11 | grep "$lines $words $chars" || {
-    echo -en "$input" | 1.11 && false;
+  printf "$input" | 1.11 | grep "$lines $words $chars" || {
+    printf "$input"
+    printf "$input" | 1.11 && false
   }
 }
 

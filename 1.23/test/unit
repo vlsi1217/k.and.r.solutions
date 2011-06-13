@@ -5,30 +5,30 @@ source helpers
 describe "comment stripper"
 
 it_should_strip_a_c_style_comment() {
-  echo "a/* strip */b" | 1.23 | tee /dev/stderr | grep ab
+  assert_strips "a/* strip */b" "ab"
 }
 
 it_should_ignore_double_slashes() {
-  echo "// retain" | 1.23 | tee /dev/stderr | grep "\/\/ retain"
+  assert_strips "// retain" "\/\/ retain"
 }
 
 it_should_handle_quoted_strings_properly() {
-  echo "\"/* retain */b\"" | 1.23 | tee /dev/stderr | grep "retain"
+  assert_strips "\"/* retain */b\"" "retain"
 }
 
 it_should_handle_character_constants_properly() {
-  echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"
+  assert_strips "'/* retain */b'" "retain"
 }
 
 it_should_handle_character_constants_properly() {
-  echo "'/* retain */b'" | 1.23 | tee /dev/stderr | grep "retain"
+  assert_strips "'/* retain */b'" "retain"
 }
 
 it_should_ignore_incorrectly_opened_comment() {
-  echo "/ * retain */" | 1.23 | tee /dev/stderr | grep "retain"
+  assert_strips "/ * retain */" "retain"
 }
 
 it_should_ignore_incorrectly_closed_comment() {
-  echo "/* comment * / strip */" | 1.23 | tee /dev/stderr | grep -v "strip"
+  assert_strips "/* comment * / strip */" ""
 }
 

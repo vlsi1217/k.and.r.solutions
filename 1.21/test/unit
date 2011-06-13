@@ -2,13 +2,25 @@
 
 source helpers
 
-describe "entab"
+describe "entab spaces with tabstop 4"
 
 it_should_preserve_space() {
-  echo -e " space\ttab" | entab | grep " space"
+  assert_debtabs ". ." ". ."
 }
 
-it_should_entab() {
-  echo -e " space\ttab" | entab | grep -P "\ttab"
+it_should_preserve_two_spaces() {
+  assert_debtabs ".  ." ".  ."
+}
+
+it_should_preserve_three_spaces() {
+  assert_debtabs ".   ." ".\t."
+}
+
+it_tab_and_preserve_one() {
+  assert_debtabs ".    ." ".\t ."
+}
+
+it_tab_and_preserve_two() {
+  assert_debtabs ".     ." ".\t  ."
 }
 

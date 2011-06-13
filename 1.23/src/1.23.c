@@ -17,9 +17,11 @@
 
 int main() {
   int state = CODE;
-  int character, last;
+  int character = 0;
+  int last = 0;
 
-  while((last = character) && (character = getchar()) && character != EOF) {
+  while((character = getchar()) && character != EOF) {
+    last = character;
 
     // code state
 
@@ -91,3 +93,4 @@ int main() {
 
   return 0;
 }
+
