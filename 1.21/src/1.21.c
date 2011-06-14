@@ -41,12 +41,11 @@ int main() {
 
 void flush(int spaces, int column) {
   int i = 0;
-  int overhang = spaces - (column % TABWIDTH);
 
   while(i < spaces) {
-    if(i < overhang) {
+    if(i < spaces - (column % TABWIDTH)) {
       putchar('\t');
-      i += TABWIDTH; // XXX too much
+      i += TABWIDTH - ((column - spaces + i) % TABWIDTH);
 
     } else {
       putchar(' ');

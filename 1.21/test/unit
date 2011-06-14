@@ -16,11 +16,19 @@ it_should_preserve_three_spaces() {
   assert_debtabs ".   ." ".\t."
 }
 
-it_tab_and_preserve_one() {
+it_should_tab_and_preserve_one() {
   assert_debtabs ".    ." ".\t ."
 }
 
-it_tab_and_preserve_two() {
+it_should_tab_and_preserve_two() {
   assert_debtabs ".     ." ".\t  ."
+}
+
+it_should_tab_and_preserve_three() {
+  assert_debtabs ".      ." ".\t   ."
+}
+
+it_should_tab_twice_and_preserve_two() {
+  assert_debtabs ".         ." ".\t\t  ."
 }
 

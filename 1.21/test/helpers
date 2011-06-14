@@ -2,11 +2,11 @@
 
 assert_debtabs() {
   local input=$1
-  local expected=$(printf $2)
+  local expected=$(printf "$2")
   local actual=$(printf "$input" | 1.21)
 
   printf "$actual" | grep "$expected" || {
-    echo error. input: "$input" result: "$result"
+    echo error. input: "$input" result: "$actual"
     false
   }
 }
