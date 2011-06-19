@@ -1,0 +1,22 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "loop equivalent"
+
+it_should_echo_the_input_line() {
+  echo "0123456789" | 2.02 | grep "0123456789"
+}
+
+it_should_not_echo_the_input_line() {
+  echo "0123456789." | 2.02 | grep -v "0123456789."
+}
+
+it_should_not_use_and_and() {
+  ! grep "&&" < ../src/2.02.c
+}
+
+it_should_not_use_or_or() {
+  ! grep "||" < ../src/2.02.c
+}
+

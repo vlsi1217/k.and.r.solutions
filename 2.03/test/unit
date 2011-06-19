@@ -1,0 +1,34 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "htoi"
+
+it_should_convert_to_15() {
+  assert_converts f 15
+}
+
+it_should_convert_uppercase_to_15() {
+  assert_converts F 15
+}
+
+it_should_convert_to_10() {
+  assert_converts a 10
+}
+
+it_should_convert_uppercase_to_10() {
+  assert_converts A 10
+}
+
+it_should_convert_to_0() {
+  assert_converts 0 0
+}
+
+it_should_convert_to_9() {
+  assert_converts 9 9
+}
+
+it_should_convert_to_16() {
+  assert_converts 10 16
+}
+

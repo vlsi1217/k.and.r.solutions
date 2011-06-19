@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 assert_debtabs() {
-  local input=$1
-  local expected=$(printf "$2")
-  local actual=$(printf "$input" | 1.21)
+  local input="$1"
+  local expected="$(printf $2)"
 
-  printf "$actual" | grep "$expected" || {
-    echo error. input: "$input" result: "$actual"
+  printf "$input" | 1.21 | grep "$expected" || {
+    echo input: "$input"
+    echo output: $(printf "$input" | 1.21)
     false
   }
 }

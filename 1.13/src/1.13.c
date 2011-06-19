@@ -92,3 +92,4 @@ int normalize(char letter) {
     return -1;
   }
 }
+

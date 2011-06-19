@@ -1,38 +1,38 @@
 #!/usr/bin/env roundup
 
-source helpers
+. helpers
 
 describe "wrapper"
 
 it_should_not_truncate_last_word() {
-  echo 'aa bb cc dd ee ff gg' | lfold | grep 'aa bb cc dd ee ff gg'
+  assert_in_out 'aa bb cc dd ee ff gg' 'aa bb cc dd ee ff gg'
 }
 
 it_should_deal_with_single_characters() {
-  echo 'a' | lfold | grep 'a'
+  assert_in_out 'a' 'a'
 }
 
 it_should_deal_with_single_trailing_characters() {
-  echo ' a' | lfold | grep 'a'
+  assert_in_out ' a' 'a'
 }
 
 it_should_not_add_garbage_to_the_end_of_words() {
-  echo 'this is i' | lfold | grep 'this is i'
+  assert_in_out 'this is i' 'this is i'
 }
 
-it_should_echo_everything() {
-  echo '0 1 2 3 4 5 6 7 8 9' | lfold | grep '0 1 2 3 4 5 6 7 8 9'
+it_should_assert_in_out_everything() {
+  assert_in_out '0 1 2 3 4 5 6 7 8 9' '0 1 2 3 4 5 6 7 8 9'
 }
 
 it_should_wrap() {
   echo 'echo please wrap me. please wrap me. please wrap me. please wrap me. please wrap me. please' | \
-    lfold | \
+    1.22 | \
     test 2 = $(wc -l)
 }
 
 it_should_not_wrap() {
   echo 'please wrap me. please wrap me. please wrap me. please wrap me. please wrap me.' | \
-    lfold | \
+    1.22 | \
     test 1 = $(wc -l)
 }
 

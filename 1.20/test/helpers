@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 
-spaces() {
-  local col=$1
+spacestab() {
+  local col="$1"
 
-  ruby -e "($col - 1).times { print ' ' }"
+  ruby -e "($col - 1).times { print ' ' }; print \"\t\""
 }
 
 assert_detabs_to() {
-  local expansion=$1
-  local column=$2
-  local result=$(echo "$(spaces $column)	" | 1.20)
-  local expected=$(($column + $expansion))
+  local expansion="$1"
+  local column="$2"
+  local expected=$(( $column + $expansion - 1 ))
 
-  echo "$result" | wc -c | xargs test "$expected" = || {
-    echo failed: "${result}"
-    false
-  }
+  spacestab "$column" | 1.20 | wc -c | xargs test "$expected" =
 }
 

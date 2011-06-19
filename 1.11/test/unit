@@ -1,6 +1,6 @@
 #!/usr/bin/env roundup
 
-source helpers
+. helpers
 
 describe "word count tests"
 

@@ -2,7 +2,7 @@
 
 #define MAXCHARS 200
 
-int getline(char line[], int maxchars);
+int getline2(char line[], int maxchars);
 void copy(char to[], char from[]);
 
 /*
@@ -19,7 +19,7 @@ main() {
   char longest[MAXCHARS];
 
   max = 0;
-  while((len = getline(line, MAXCHARS)) > 0) {
+  while((len = getline2(line, MAXCHARS)) > 0) {
     if (len > max) {
       max = len;
       copy(longest, line);
@@ -33,7 +33,7 @@ main() {
   return 0;
 }
 
-int getline(char line[], int maxchars) {
+int getline2(char line[], int maxchars) {
   int c, length, copied;
 
   copied = 0;

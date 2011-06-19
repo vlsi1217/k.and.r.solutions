@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int getline(char line[], int maxchars);
+int getline2(char line[], int maxchars);
 int reverse(char line[], int length);
 
 #define MAX_LINE_LENGTH 80
@@ -17,7 +17,7 @@ int main() {
 
   length = 0;
 
-  while((length = getline(line, MAX_LINE_LENGTH)) >= 0) {
+  while((length = getline2(line, MAX_LINE_LENGTH)) >= 0) {
     reverse(line, length);
     printf("%s", line);
     printf("\n");
@@ -26,7 +26,7 @@ int main() {
   return 0;
 }
 
-int getline(char line[], int maxchars) {
+int getline2(char line[], int maxchars) {
   int c, length, copied;
   copied = 0;
 

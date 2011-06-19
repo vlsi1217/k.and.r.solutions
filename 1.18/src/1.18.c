@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int getline(char line[], int maxlen);
+int trimmed_line(char line[], int maxlen);
 
 #define MAX_LINE_LENGTH 80
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int getline(char line[], int maxchars);
+int getline2(char line[], int maxchars);
 
 #define LINE_BUFFER 1000
 #define TRUNCATE 80
@@ -17,7 +17,7 @@ main() {
 
   length = 0;
 
-  while((length = getline(line, LINE_BUFFER)) > 0) {
+  while((length = getline2(line, LINE_BUFFER)) > 0) {
     if(length > TRUNCATE) {
       printf("%s", line);
     }
@@ -26,7 +26,7 @@ main() {
   return 0;
 }
 
-int getline(char line[], int maxchars) {
+int getline2(char line[], int maxchars) {
   int c, length, copied;
   copied = 0;
 

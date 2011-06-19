@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-flunk() {
-  false
+assert_in_out() {
+  local in="$1"
+  local out="$2"
+
+  printf "$in" | 1.22 | grep "$out"
 }
 

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_converts() {
+  local input="$1"
+  local expected="$2"
+
+  echo "$input" | 2.03 | test "$expected" = || {
+    echo incorrect: $(echo "$input" | 2.03)
+    false
+  }
+}
+

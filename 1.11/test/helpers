@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 assert_counts() {
-  local input=$1
-  local lines=$2
-  local words=$3
-  local chars=$4
+  local input="$1"
+  local lines="$2"
+  local words="$3"
+  local chars="$4"
 
   printf "$input" | 1.11 | grep "$lines $words $chars" || {
     printf "$input"

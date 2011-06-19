@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 assert_strips() {
-  local input=$1
-  local expected=$2
-  local actual=$(echo "$input" | 1.23)
+  local input="$1"
+  local expected="$2"
 
-  echo "$actual" | grep "$expected" || {
-    echo error for input "$input": "$actual"
+  echo "$input" | 1.23 | grep "$expected" || {
+    echo error for input "$input": $(echo "$input" | 1.23)
     false
   }
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env roundup
 
-source helpers
+. helpers
 
 describe "c type size inspector for chars"
 

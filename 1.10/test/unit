@@ -1,6 +1,6 @@
 #!/usr/bin/env roundup
 
-source helpers
+. helpers
 
 it_should_convert_tabs() {
   echo "tab: 	" | 1.10 | grep "\t"
