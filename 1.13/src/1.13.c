@@ -3,7 +3,6 @@
 void display(char gram[]);
 void display_bar(int height);
 void display_label(int letter);
-void histogram();
 int normalize(char letter);
 
 /*
@@ -14,15 +13,6 @@ int normalize(char letter);
  */
 
 main() {
-  histogram();
-}
-
-/*
- *  Builds a histogram of characters found in STDIN.
- *
- */
-
-void histogram() {
   char gram[26];
   int c;
 

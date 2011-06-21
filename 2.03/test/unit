@@ -32,3 +32,15 @@ it_should_convert_to_16() {
   assert_converts 10 16
 }
 
+it_should_convert_postfixed() {
+  assert_converts 10x 16
+}
+
+it_should_convert_upcase_postfixed() {
+  assert_converts 10X 16
+}
+
+it_should_convert_to_9332720() {
+  assert_converts 8E67f0x 9332720
+}
+

@@ -12,7 +12,7 @@ it_should_print_char_freq_as_boxes() {
   echo "bbbbbbb" | 1.13 | grep "b ██████"
 }
 
-it_should_not_print_box_for_unspecified_character() {
+it_should_not_graph_unspecified_character() {
   echo "" | 1.13 | grep "c "
 }
 
