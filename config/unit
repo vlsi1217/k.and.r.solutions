@@ -2,9 +2,9 @@
 
 source helpers
 
-describe "${name} aspect foo"
+describe "foo"
 
 it_should_pass() {
-  ${name}
+  echo hello | ${name}
 }
 

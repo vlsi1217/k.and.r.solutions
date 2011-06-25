@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PATH=$PATH:$(pwd)/bin:.
+
+echo -n '2.04: '
+cd test > /dev/null && $(ls | grep -v helpers)
+

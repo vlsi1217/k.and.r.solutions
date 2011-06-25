@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+assert_squeezes_to() {
+  local input="$1"
+  local blacklist="$2"
+  local expected="$3"
+
+  printf "$input" | 2.04 "$blacklist" | grep "^$expected$" || {
+    echo  actual: $(printf "$input" | 2.04 "$blacklist")
+    false
+  }
+}
+

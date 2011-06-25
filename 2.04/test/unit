@@ -1,0 +1,33 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "squeeze"
+
+it_should_delete_character() {
+  assert_squeezes_to "a" "a" ""
+}
+
+it_should_delete_characters() {
+  assert_squeezes_to "aa" "a" ""
+}
+
+it_should_not_delete_character() {
+  assert_squeezes_to "a" "x" "a"
+}
+
+it_should_not_delete_characters() {
+  assert_squeezes_to "ab" "x" "ab"
+}
+
+it_should_delete_from_blacklist() {
+  assert_squeezes_to "aabbcc" "abc" ""
+}
+
+it_should_not_delete_from_blacklist() {
+  assert_squeezes_to "def" "abc" "def"
+}
+
+it_should_delete_vowels() {
+  assert_squeezes_to "lorem ipsum dolor sit amet" "aeiou" "lrm psm dlr st mt"
+}

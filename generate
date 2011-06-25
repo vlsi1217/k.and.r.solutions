@@ -45,6 +45,7 @@ if ! test -f $helpers
   then
     echo creating helpers script
     cp config/helpers $helpers
+    sed -i '' "s/\${name}/$name/g" $helpers
 fi
 
 if ! test -f $unit

@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-flunk() {
-  false
+assert_truthy() {
+  local input="$1"
+  local expected="$2"
+
+  printf "$input" | ${name} | grep "$expected" || {
+    echo  error: $(printf "$input" | ${name})
+    false
+  }
 }
 
