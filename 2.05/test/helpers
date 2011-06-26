@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+assert_strpbrks() {
+  local input="$1"
+  local list="$2"
+  local expected="$3"
+
+  printf "$input" | 2.05 "$list" | xargs test "$expected" = || {
+    echo  actual: $(printf "$input" | 2.05 "$list")
+    false
+  }
+}
+

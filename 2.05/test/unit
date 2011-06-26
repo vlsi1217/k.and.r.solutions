@@ -1,0 +1,17 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "strpbrk"
+
+it_should_index_a() {
+  assert_strpbrks "fast" "a" 1
+}
+
+it_should_not_index_a() {
+  assert_strpbrks "slow" "a" -1
+}
+
+it_should_index_f_from_blacklist() {
+  assert_strpbrks "fast" "tsaf" 0
+}
