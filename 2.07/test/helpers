@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+assert_inverts() {
+  local x="$1"
+  local p="$2"
+  local n="$3"
+  local expected="$4"
+
+  2.07 "$x" "$p" "$n" | grep "^${expected}$" || {
+    echo obase=2\;$(2.07 "$x" "$p" "$n") | bc
+    false
+  }
+}
+

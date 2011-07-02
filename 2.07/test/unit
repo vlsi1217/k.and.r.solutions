@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "bit inverter"
+
+it_should_invert() {
+  assert_inverts 255 6 4 195
+}
+
