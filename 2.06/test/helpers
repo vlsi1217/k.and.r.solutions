@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+assert_copies() {
+  local x="$1"
+  local p="$2"
+  local n="$3"
+  local y="$4"
+  local expected="$5"
+
+  2.06 "$x" "$p" "$n" "$y" | grep "^${expected}$" || {
+    echo obase=2\;$(2.06 "$x" "$p" "$n" "$y") | bc
+    false
+  }
+}
+

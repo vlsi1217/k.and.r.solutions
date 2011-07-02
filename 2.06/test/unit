@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "setbits"
+
+it_should_copy_correctly() {
+  assert_copies 0 3 3 455 14
+}
+

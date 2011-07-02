@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+gcc -g src/2.06.c -o bin/2.06
+echo built 2.06.
+
