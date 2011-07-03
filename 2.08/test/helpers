@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+assert_rotates() {
+  local x="$1"
+  local n="$2"
+  local expected="$3"
+
+  printf "$x" | 2.08 "$n" | grep "^${expected}$" || {
+    echo  error: $(printf "$x" | 2.08 "$n")
+    false
+  }
+}
+

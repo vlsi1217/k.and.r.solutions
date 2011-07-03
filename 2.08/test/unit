@@ -1,0 +1,14 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "rightrot"
+
+it_should_rotate_ring() {
+  assert_rotates 52 5 2684354561
+}
+
+it_should_do_a_full_rotation() {
+  assert_rotates 52 32 52
+}
+
