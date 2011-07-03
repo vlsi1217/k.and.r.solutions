@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_counts() {
+  local input="$1"
+  local expected="$2"
+
+  printf "$input" | 2.09 | grep "^${expected}$" || {
+    echo  actual: $(printf "$input" | 2.09)
+    false
+  }
+}
+

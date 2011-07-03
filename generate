@@ -2,13 +2,47 @@
 
 # usage
 
-if ! test $1
+function usage {
+  echo generates a tcpl project.
+  echo
+  echo usage:
+  echo
+  echo generate -n name \\
+  echo "  [-s stub_file]"
+  echo
+  echo defaults:
+  echo
+  echo "  stub_file: $stub_file"
+  echo
+}
+
+stub_file="stub"
+
+while getopts "n:s:" option
+do
+  case "$option" in
+    n)
+      name="$OPTARG"
+      ;;
+    s)
+      stub_file="$OPTARG"
+      ;;
+    h)
+      usage
+      exit 0
+      ;;
+    [?])
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z $name ]] || [[ -z $stub_file ]]
   then
-    echo "USAGE: generate <name>."
+    usage
     exit 1
 fi
-
-name=$(basename $1)
 
 auto=$name/auto
 build=$name/build
@@ -58,6 +92,6 @@ fi
 if ! test -f $src
   then
     echo creating program stub
-    cp config/stub.c $src
+    cp config/$stub_file.c $src
 fi
 

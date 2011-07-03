@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "fast bitcount"
+
+it_should_count() {
+  assert_counts 2261 6
+}
+

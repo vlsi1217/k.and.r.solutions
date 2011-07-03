@@ -4,7 +4,7 @@ assert_truthy() {
   local input="$1"
   local expected="$2"
 
-  printf "$input" | ${name} | grep "$expected" || {
+  printf "$input" | ${name} | grep "^${expected}$" || {
     echo  error: $(printf "$input" | ${name})
     false
   }
