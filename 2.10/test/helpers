@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_lowers() {
+  local input="$1"
+  local expected="$2"
+
+  printf "$input" | 2.10 | grep "^${expected}$" || {
+    echo  actual: $(printf "$input" | 2.10)
+    false
+  }
+}
+

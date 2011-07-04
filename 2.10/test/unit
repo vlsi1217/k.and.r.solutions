@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "lowercaser"
+
+it_should_lowercase() {
+  assert_lowers AaBbCc aabbcc
+}
+
