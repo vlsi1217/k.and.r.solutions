@@ -2,6 +2,6 @@
 
 PATH=$PATH:$(pwd)/bin:.
 
-echo -n '1.14: '
+echo -n '3.01: '
 cd test > /dev/null && $(ls | grep -v helpers | grep -v fixtures)
 

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+gcc -g src/3.01.c -o bin/3.01
+echo built 3.01.
+

@@ -2,4 +2,4 @@
 
 PATH=$PATH:.
 
-for project in $(list); do generate $project; done
+for project in $(list); do generate -n $project; done

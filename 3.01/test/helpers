@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_finds_in_numbers() {
+  local input="$1"
+  local expected="$2"
+
+  echo {1..10} | tr \  \\n | 3.01 "$input" | grep "^${expected}$" || {
+    echo actual: $(echo {1..10} | tr \  \\n | 3.01 "$input")
+    false
+  }
+}
+

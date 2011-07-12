@@ -1,0 +1,22 @@
+#!/usr/bin/env roundup
+
+source helpers
+
+describe "binary search"
+
+it_should_find_bottom() {
+  assert_finds_in_numbers 1 :0
+}
+
+it_should_find_top() {
+  assert_finds_in_numbers 10 :9
+}
+
+it_should_not_find_in_bottom() {
+  assert_finds_in_numbers 0 :-1
+}
+
+it_should_not_find_in_top() {
+  assert_finds_in_numbers 11 :-1
+}
+
