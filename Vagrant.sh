@@ -2,7 +2,7 @@
 
 # packages
 
-which apt-get && sudo apt-get -y install curl vim
+which apt-get && sudo apt-get -y install curl vim valgrind
 
 # roundup
 
