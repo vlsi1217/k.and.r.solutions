@@ -1,11 +1,26 @@
 #!/usr/bin/env bash
 
+sequence() {
+  local lowest="$1"
+  local highest="$2"
+
+  which seq > /dev/null
+
+  if test $? = 0
+    then
+      printf "$(seq $lowest $highest)"
+    else
+      echo "$(jot - $lowest $highest)"
+  fi
+
+}
+
 assert_finds_in_numbers() {
   local input="$1"
   local expected="$2"
 
-  echo {1..10} | xargs -n1 echo | 3.01 "$input" | grep "^${expected}$" || {
-    echo actual: $(echo {1..10} | tr \  \\n | 3.01 "$input")
+  sequence 1 10 | 3.01 "$input" | grep "^${expected}$" || {
+    echo actual: $(sequence 1  10 | 3.01 "$input" )
     false
   }
 }
