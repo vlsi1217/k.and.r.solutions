@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 PATH=$PATH:$(pwd)/bin:.
+cd test > /dev/null
 
-echo -n '1.16: '
-cd test > /dev/null && $(ls | grep -v helpers | grep -v fixtures)
-
+for file in $(ls)
+do
+  file -b "$file" | grep roundup > /dev/null
+  if test $? = 0; then echo -n '1.16: '; $file; fi
+done
