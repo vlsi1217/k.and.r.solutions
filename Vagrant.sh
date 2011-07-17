@@ -2,7 +2,10 @@
 
 # packages
 
-which apt-get && sudo apt-get -y install curl vim valgrind
+which apt-get && {
+  sudo apt-get -y install curl vim ack-grep
+  sudo apt-get -y install valgrind
+}
 
 # roundup
 

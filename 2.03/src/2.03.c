@@ -66,7 +66,8 @@ int normalize(char input[]) {
     if(i == strlen(input) - 1 && (chr == 'X' || chr == 'x')) {
       input[i] = '\0';
 
-    } else if(!ishexnumber(chr)) {
+
+    } else if(!isxdigit(chr)) {
       return 0;
 
     } else {

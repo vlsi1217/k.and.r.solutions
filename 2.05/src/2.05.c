@@ -46,7 +46,7 @@ int strpbrk2(char input[], char list[]) {
   to_bitmask(list, bitmask);
 
   for(i = 0; input[i] != '\0'; i++) {
-    bucket = floor(input[i] / BUCKET_WIDTH);
+    bucket = input[i] / BUCKET_WIDTH;
     offset = input[i] - (bucket * BUCKET_WIDTH);
 
     if(bitmask[bucket] & 1 << offset) {
@@ -68,7 +68,7 @@ void to_bitmask(char list[], unsigned long int bitmask[]) {
   int i, bucket, offset;
 
   for(i = 0; list[i] != '\0'; i++) {
-    bucket = floor(list[i] / BUCKET_WIDTH);
+    bucket = list[i] / BUCKET_WIDTH;
     offset = list[i] - bucket * BUCKET_WIDTH;
 
     bitmask[bucket] |= 1 << offset;

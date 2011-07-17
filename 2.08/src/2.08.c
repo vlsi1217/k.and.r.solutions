@@ -88,7 +88,7 @@ int isnumerical(char string[]) {
   int i;
 
   for(i = 0; string[i] != '\0'; i++) {
-    if(!isnumber(string[i])) {
+    if(!isdigit(string[i])) {
       return 0;
     }
   }

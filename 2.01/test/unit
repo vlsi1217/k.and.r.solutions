@@ -1,3 +1,1 @@
-#!/usr/bin/env roundup
-
-describe "units"
+# test various datatype bounds
