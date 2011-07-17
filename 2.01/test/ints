@@ -14,8 +14,8 @@ it_should_know_unsigned_int() { # 32 bits; ymmv
   assert_type "unsigned int" 0 4294967295
 }
 
-it_should_know_unsigned_long_int() { # 64 bits; ymmv
-  assert_type "unsigned long int" 0 18446744073709551615i
+it_should_know_unsigned_long_int() { # 64 or 32 bits; ymmv
+  assert_type "unsigned long int" 0 18446744073709551615i 0 4294967295i
 }
 
 # signed
@@ -29,6 +29,6 @@ it_should_know_signed_int() {  # 32 bits; ymmv
 }
 
 it_should_know_signed_long_int() {  # 64 bits; ymmv
-  assert_type "signed long int" -9223372036854775808 9223372036854775807
+  assert_type "signed long int" -9223372036854775808 9223372036854775807 -2147483648 2147483647
 }
 
