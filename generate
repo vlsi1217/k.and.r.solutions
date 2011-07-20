@@ -45,7 +45,7 @@ if [[ -z $name ]] || [[ -z $stub_file ]]
 fi
 
 auto=$name/auto
-build=$name/build
+build=$name/Makefile
 helpers=$name/test/helpers
 src=$name/src/$name.c
 suite=$name/suite
@@ -59,7 +59,7 @@ mkdir -p $name/{bin,src,test}
 # build script
 
 echo creating build script
-cp config/build $build
+cp config/Makefile $build
 sed -i '' "s/\${name}/$name/g" $build
 
 # suite script

@@ -4,5 +4,5 @@ PATH=$PATH:.
 
 for project in $(list)
 do
-  (cd $project > /dev/null && make)
+  (cd $project > /dev/null && make clean)
 done

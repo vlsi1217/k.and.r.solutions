@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-gcc -g src/1.23.c -o bin/1.23
-echo built 1.23.
-

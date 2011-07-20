@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-gcc -g src/1.16.c -o bin/1.16
-echo built 1.16.
-

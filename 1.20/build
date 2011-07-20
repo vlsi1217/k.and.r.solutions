@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-gcc -g src/1.20.c -o bin/1.20
-echo built 1.20.
-

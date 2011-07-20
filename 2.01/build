@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-gcc -g src/2.01.c -o bin/2.01
-echo built 2.01.
-

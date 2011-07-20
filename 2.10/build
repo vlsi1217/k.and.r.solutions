@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-gcc -g src/2.10.c -o bin/2.10
-echo built 2.10.
-
