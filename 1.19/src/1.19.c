@@ -56,5 +56,7 @@ int reverse(char line[], int length) {
     line[pair] = line[i];
     line[i] = c;
   }
+
+  return 0;
 }
 

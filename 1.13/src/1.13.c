@@ -12,7 +12,7 @@ int normalize(char letter);
  *
  */
 
-main() {
+int main() {
   char gram[26];
   int c;
 
@@ -50,7 +50,7 @@ void display(char gram[]) {
  *
  */
 
-void display_label(label) {
+void display_label(int label) {
   printf("%c ", label);
 }
 
@@ -59,7 +59,7 @@ void display_label(label) {
  *
  */
 
-void display_bar(height) {
+void display_bar(int height) {
   int i;
 
   for(i = 0; i < height; i++) {

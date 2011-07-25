@@ -10,7 +10,7 @@ int trimmed_line(char line[], int maxlen);
  *
  */
 
-main() {
+int main() {
   int length = 0;
   char line[MAX_LINE_LENGTH];
 

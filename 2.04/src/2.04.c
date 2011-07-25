@@ -13,7 +13,7 @@ void squeeze(char input[], char blacklist[]);
 
 #define MAX_LINE_LENGTH 1024
 
-main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
   int length;
   char line[MAX_LINE_LENGTH];
 

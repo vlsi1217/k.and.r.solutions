@@ -8,8 +8,8 @@ float to_celsius(float fahr);
  *
  */
 
-main() {
-  float fahr, celsius;
+int main() {
+  float fahr;
   float lower, upper, step;
 
   lower = 0;

@@ -33,6 +33,6 @@ unsigned int invert(unsigned int x, int p, int n) {
  */
 
 unsigned int mask(int p, int n) {
-  return ~(~0 << n) << p - n;
+  return ~(~0 << n) << (p - n);
 }
 

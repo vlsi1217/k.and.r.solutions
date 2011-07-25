@@ -6,6 +6,9 @@
 #define END_OF_STREAM -1
 #define MAX_WORD_LENGTH 100
 
+int scan(char word[]);
+int buffer(char word[]);
+
 /*
  * Write a program that prints its input one word per line.
  *
@@ -27,7 +30,7 @@ int main() {
 int scan(char word[]) {
   int character;
 
-  while(character = getchar()) {
+  while((character = getchar())) {
     if(character == EOF) {
       return END_OF_STREAM;
     }
@@ -37,6 +40,8 @@ int scan(char word[]) {
       return buffer(word);
     }
   }
+
+  return 0;
 }
 
 /* buffering state. waiting for end of word */
@@ -44,7 +49,7 @@ int scan(char word[]) {
 int buffer(char word[]) {
   int character, index = 1;
 
-  while(character = getchar()) {
+  while((character = getchar())) {
     if(character != DELIMITER && character != EOF && index < MAX_WORD_LENGTH) {
       word[index] = character;
 
@@ -55,4 +60,7 @@ int buffer(char word[]) {
 
     index++;
   }
+
+  return 0;
 }
+

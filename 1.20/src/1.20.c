@@ -11,7 +11,7 @@
  *
  */
 
-main() {
+int main() {
   int cursor = 1;
   int expansion = 0;
   int i, c;

@@ -17,7 +17,7 @@ double to_farenheit(int celcius) {
  *
  */
 
-main() {
+int main() {
   int celcius;
 
   printf("%s %s\n", "celcius", "farenheit");

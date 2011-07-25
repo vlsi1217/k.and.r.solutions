@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 unsigned int setbits(unsigned int x, int p, int n, unsigned int y) {
   int index = p + 1;
 
-  return delete(x, index, n) + rightmost(y, n) << index - n;
+  return (delete(x, index, n) + rightmost(y, n)) << (index - n);
 }
 
 /*

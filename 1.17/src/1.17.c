@@ -11,7 +11,7 @@ int getline2(char line[], int maxchars);
  *
  */
 
-main() {
+int main() {
   int length;
   char line[LINE_BUFFER];
 

@@ -1,4 +1,5 @@
 .vagrant
+gmon.out
 callgrind.*
 bin/
 *.dSYM/
