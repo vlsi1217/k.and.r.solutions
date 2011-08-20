@@ -8,17 +8,17 @@ function usage {
   echo usage:
   echo
   echo generate -n name \\
-  echo "  [-s stub_file]"
+  echo \  [-s stub_file]
   echo
   echo defaults:
   echo
-  echo "  stub_file: $stub_file"
+  echo \  stub_file: $stub_file
   echo
 }
 
 stub_file="stub"
 
-while getopts "n:s:" option
+while getopts "n:s:h" option
 do
   case "$option" in
     n)
@@ -60,7 +60,6 @@ mkdir -p $name/{bin,src,test}
 
 echo creating build script
 cp config/Makefile $build
-sed -i '' "s/\${name}/$name/g" $build
 
 # suite script
 

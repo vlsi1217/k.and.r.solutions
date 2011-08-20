@@ -19,8 +19,8 @@ assert_finds_in_numbers() {
   local input="$1"
   local expected="$2"
 
-  sequence 1 10 | 3.01 "$input" | grep "^${expected}$" || {
-    echo actual: $(sequence 1  10 | 3.01 "$input" )
+  sequence 1 10 | 3.01 -k "$input" | grep "^${expected}$" || {
+    echo actual: $(sequence 1  10 | 3.01 -k "$input" )
     false
   }
 }

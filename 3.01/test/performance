@@ -1,8 +1,13 @@
-#!/usr/bin/env bash
-
-PATH=$PATH:$(pwd)/bin:$(pwd)/test
+#!/usr/bin/env roundup
 
 . helpers
 
-sequence 1 1000000 | valgrind --tool=callgrind --simulate-cache=yes 3.01 0
+describe "binary search perfomance"
+
+it_should_outperform_slower_version() {
+  local slow=$(sequence 1 10000 | bin/3.01 -k 10 -i 500000 -t)
+  local fast=$(sequence 1 10000 | bin/3.01.fast -k 10 -i 500000 -t)
+
+  test $slow -lt $fast
+}
 

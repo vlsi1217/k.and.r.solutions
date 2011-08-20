@@ -5,7 +5,7 @@ ldflags = -g
 
 .PHONY : all clean
 
-all : bin/2.04
+all : $(patsubst src/%.c,bin/%,$(wildcard src/*.c))
 
 bin/% : bin/%.o
 	$(ld) $(ldflags) $? -o $@

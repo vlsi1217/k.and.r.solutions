@@ -65,18 +65,19 @@ int binsearch(int key, int sorted[], int length) {
   int high = length - 1;
   int mid;
 
-  while(low <= high) {
+  while(low <= high && sorted[mid] != key) {
     mid = (low + high) / 2;
 
     if(key < sorted[mid]) {
       high = mid - 1;
 
-    } else if(key > sorted[mid]) {
+    } else {
       low = mid + 1;
 
-    } else {
-      return mid;
+    }
 
+    if(sorted[mid] == key) {
+      return mid;
     }
   }
 
