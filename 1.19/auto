@@ -5,6 +5,6 @@ PATH=$PATH:.
 while read -n1
 do
   clear
-  build && suite
+  make && suite
 done
 

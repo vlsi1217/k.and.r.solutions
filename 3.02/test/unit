@@ -1,0 +1,14 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "escaper"
+
+it_converts_from_tabs() {
+  assert_escapes_bytes "\t" "5C74"
+}
+
+it_converts_from_newlines() {
+  assert_escapes_bytes "\n" "5C6E"
+}
+

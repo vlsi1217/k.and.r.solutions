@@ -1,0 +1,14 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "unescaper"
+
+it_converts_to_tabs() {
+  assert_unescapes_bytes "\t" "09"
+}
+
+it_converts_to_newlines() {
+  assert_unescapes_bytes "\n" "0A"
+}
+

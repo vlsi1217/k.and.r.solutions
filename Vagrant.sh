@@ -66,14 +66,6 @@ set -e
   }
 )
 
-# fixes
-
-(
-  cat <<-config > ~/.config/.fixes
-		export LC_CTYPE=en_US.UTF-8
-	config
-)
-
 # ingest
 
 (

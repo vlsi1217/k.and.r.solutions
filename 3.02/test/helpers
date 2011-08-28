@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+grepper() {
+  local expected="$1"
+
+  hexdump -e '1/1 "%02X"' | grep "^$expected$"
+}
+
+assert_escapes_bytes() {
+  local input="$1"
+  local expected="$2"
+
+  printf "$input" | 3.02 | grepper "$expected"
+}
+
+assert_unescapes_bytes() {
+  local input="$1"
+  local expected="$2"
+
+  echo -n "$input" | 3.02.unescaper | grepper "$expected"
+}
+
