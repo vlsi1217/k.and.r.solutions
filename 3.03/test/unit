@@ -1,0 +1,66 @@
+#!/usr/bin/env roundup
+
+describe "expander"
+
+. helpers
+
+# should expand
+
+it_should_expand_letters() {
+  assert_expands "a-z" {a..z}
+}
+
+it_should_expand_capitals() {
+  assert_expands "A-Z" {A..Z}
+}
+
+it_should_expand_numbers() {
+  assert_expands "0-9" {0..9}
+}
+
+it_should_collapse() {
+  assert_expands "a-a" "a"
+}
+
+it_should_collapse_multiple() {
+  assert_expands "a-b-c-c" "a b c"
+}
+
+it_should_expand_multiple() {
+  assert_expands "a-z0-9" {a..z} {0..9}
+}
+
+it_should_expand_embedded() {
+  assert_expands "abc-xyz" a b {c..x} y z
+}
+
+it_should_expand_reversed_letters() {
+  assert_expands "z-a" {z..a}
+}
+
+it_should_expand_reversed_numbers() {
+  assert_expands "9-0" {9..0}
+}
+
+# should not expand
+
+it_should_not_expand_mixed_case() {
+  assert_expands "a-Z" "a-Z"
+}
+
+it_should_not_expand_leading() {
+  assert_expands "-z" "-z"
+}
+
+it_should_not_expand_leading_letters() {
+  assert_expands "-a-z" - {a..z}
+}
+
+it_should_not_expand_trailing() {
+  assert_expands "z-" "z-"
+}
+
+it_should_not_expand_unenumerable() {
+  assert_expands "}-z" "}-z"
+}
+

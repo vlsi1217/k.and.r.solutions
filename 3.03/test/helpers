@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_expands() {
+  local input="$1" && shift
+  local expected=$(echo "$@" | tr -d ' ')
+
+  echo -n "$input" | 3.03 | grep "^${expected}$" || {
+    echo  error: $(echo -n "$input" | 3.03) is not $expected
+    false
+  }
+}
+

@@ -37,7 +37,14 @@ set -e
 
   ls bmizerany-roundup* || {
     curl -L http://github.com/bmizerany/roundup/tarball/v0.0.5 | tar xvzf -
-    (cd bmizerany-roundup* && ./configure && make && sudo make install)
+    (
+      cd bmizerany-roundup* || exit 1
+
+      # bashize
+      sed -i'' 's/#!\/bin\/sh/#!\/bin\/bash/g' roundup.sh
+
+      ./configure && make && sudo make install
+    )
   }
 )
 
