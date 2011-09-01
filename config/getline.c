@@ -7,7 +7,7 @@ int getline2(char line[], int maxchars);
 
 int main() {
   int length = 0;
-  char line[MAX_LINE_LENGTH];
+  char line[MAX_LINE_LENGTH + 1];
 
   while((length = getline2(line, MAX_LINE_LENGTH)) >= 0) {
     printf("%s\n", line);
@@ -26,7 +26,7 @@ int getline2(char line[], int maxchars) {
   copied = 0;
 
   for(length = 0; (c = getchar()) != EOF && c != '\0' && c != '\n'; length++) {
-    if(copied < maxchars - 1) {
+    if(copied < maxchars) {
       line[copied++] = c;
     }
   }
