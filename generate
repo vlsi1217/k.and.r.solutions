@@ -44,6 +44,13 @@ if [[ -z $name ]] || [[ -z $stub_file ]]
     exit 1
 fi
 
+if ! [[ -f config/$stub_file.c ]]
+  then
+    echo >&2 stub file $stub_file not found.
+    usage
+    exit 1
+fi
+
 auto=$name/auto
 build=$name/Makefile
 helpers=$name/test/helpers
