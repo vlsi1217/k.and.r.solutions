@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_converts() {
+  local input="$1"
+  local expected="$input"
+
+  echo -e "$input" | 3.04 | grep "^${expected}$" || {
+    echo  error: $(echo -e  "$input" | 3.04)
+    false
+  }
+}
+

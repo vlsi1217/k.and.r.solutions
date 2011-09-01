@@ -1,0 +1,18 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "itoa"
+
+it_should_convert() {
+  assert_converts 123
+}
+
+it_should_convert_negative() {
+  assert_converts -123
+}
+
+it_should_handle_smallest() {
+ assert_converts $(( -1 * 2 ** 31 ))
+}
+
