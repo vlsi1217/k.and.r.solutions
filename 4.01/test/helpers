@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+assert_substr() {
+  local input="$1"
+  local search="$2"
+  local offset="$3"
+
+  printf "$input" | 4.01 -s "$search" | grep "^${offset}$" || {
+    echo error: $(printf "$input" | 4.01 -s "$search" ), not $offset
+    false
+  }
+}
+

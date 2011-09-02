@@ -1,0 +1,18 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "substring"
+
+it_should_find() {
+  assert_substr "looking for word" "word" 12
+}
+
+it_should_find_last() {
+  assert_substr "looking for word other than word" "word" 28
+}
+
+it_should_not_find() {
+  assert_substr "looking" "something" -1
+}
+
