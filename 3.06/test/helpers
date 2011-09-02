@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+assert_converts() {
+  local input="$1"
+  local expected="$input"
+
+  echo -e "$input" | 3.06 | grep "^${expected}$" || {
+    echo  error: $(echo -e  "$input" | 3.06)
+    false
+  }
+}
+
+assert_width() {
+  local input="$1"
+  local width="$2"
+  local padding="$3"
+  local expected="$input"
+
+  echo -e "$input" | 3.06 -w "$width" | grep "^${padding}${expected}$" || {
+    echo  error: $(echo -e  "$input" | 3.06 -w "$width")
+    false
+  }
+}
+
