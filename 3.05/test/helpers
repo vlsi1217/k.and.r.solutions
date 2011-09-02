@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+assert_converts() {
+  local input="$1"
+  local base="$2"
+  local expected="$3"
+
+  echo -e "$input" | 3.05 -b "$base" | grep "^${expected}$" || {
+    echo  error: $(echo -e "$input" | 3.05) is not $expected
+    false
+  }
+}
+

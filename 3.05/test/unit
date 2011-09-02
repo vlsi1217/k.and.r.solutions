@@ -1,0 +1,14 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "base conversion"
+
+it_should_convert_to_hex() {
+  assert_converts 15 16 f
+}
+
+it_should_convert_negative() {
+  assert_converts -15 16 -f
+}
+
