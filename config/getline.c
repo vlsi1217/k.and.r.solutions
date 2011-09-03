@@ -6,8 +6,8 @@ int getline2(char line[], int maxchars);
 #define MAX_LINE_LENGTH 256
 
 int main() {
+  char line[MAX_LINE_LENGTH + 1] = { 0 };
   int length = 0;
-  char line[MAX_LINE_LENGTH + 1];
 
   while((length = getline2(line, MAX_LINE_LENGTH)) >= 0) {
     printf("%s\n", line);
