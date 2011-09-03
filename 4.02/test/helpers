@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+assert_adds() {
+  local expected="$1" && shift
+  local operands="$@"
+  local file="/tmp/$$.assert.adds.input"
+
+  > $file
+
+  while test "$#" -gt 0
+  do
+    echo "$1" >> $file
+    shift
+  done
+
+  cat "$file" | 4.02 | tail -n1 | grep "^${expected}$" || {
+    echo  error: $(cat "$file" | 4.02 | tail -n1) is not $expected
+    false
+  }
+}
+

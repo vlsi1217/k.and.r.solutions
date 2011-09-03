@@ -1,0 +1,18 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "accumulator"
+
+it_should_accumulate() {
+  assert_adds 12.30 6.1 6.2
+}
+
+it_should_accumulate_without_exponent() {
+  assert_adds 12468.45 123.45E 12345e
+}
+
+it_should_accumulate_scientific() {
+  assert_adds 12368.46 122.45E+2 12346e-2
+}
+
