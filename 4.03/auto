@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+PATH=$PATH:.
+
+while read -n1
+do
+  clear
+  make && suite
+done
+
