@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_stacks() {
+  local cmd="$1"
+  local expected="$2"
+
+  printf "$cmd" | 4.04 | grep "^${expected}$" || {
+    echo  error: \'$(printf "$cmd" | 4.04)\', not $expected
+    false
+  }
+}
+

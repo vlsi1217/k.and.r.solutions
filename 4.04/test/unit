@@ -1,0 +1,38 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "stack interpreter"
+
+it_should_handle_invalid_commands() {
+  assert_stacks 'foo' 'error: `foo` is not a valid cmd. try `help`.'
+}
+
+it_should_require_usage() {
+  assert_stacks 'push 1' 'error: use <n> to begin session.'
+}
+
+it_should_push() {
+  assert_stacks 'use a; push 1; push 2; peek' '2, 1'
+}
+
+it_should_pop() {
+  assert_stacks 'use a; push 1; push 2; pop; peek' '1'
+}
+
+it_should_peek_two() {
+  assert_stacks 'use a; push 1; push 2; push 3; peek 2' '3, 2'
+}
+
+it_should_clear() {
+  assert_stacks 'use a; push 1; push 2; clear; peek' ''
+}
+
+it_should_clone() {
+  assert_stacks 'use a; push 1; push 2; cp b; use b; peek' '2, 1'
+}
+
+it_should_swap() {
+  assert_stacks 'use a; push 1; push 2; push 3; swap; peek' '2, 3, 1'
+}
+
