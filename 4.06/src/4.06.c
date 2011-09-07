@@ -31,11 +31,14 @@ double vars[VARIABLES] = { 0 };
  * variables with single-letter names.) Add a variable for the most recently
  * printed value.
  *
- * Variables are stored like into one of a..z using s. To store into p:
+ * Solution
+ * --------
+ *
+ * Variables are stored into one of a..z using operation `s`. To store into p:
  *
  *   3.1415 sp
  *
- * The last value is stored into the automatic variable ~.
+ * The most recently printed value is stored in the automatic variable ~.
  *
  */
 
