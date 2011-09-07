@@ -36,10 +36,6 @@ it_should_support_modulo() {
   assert_calculates 1 '10 3 %'
 }
 
-it_should_add_negative_numbers() {
-  assert_calculates -20 '-10 -10 +'
-}
-
 it_should_take_powers() {
   assert_calculates 1024 '2 10 ^'
 }

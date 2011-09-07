@@ -4,8 +4,7 @@
 #include <math.h>
 
 #define MAXOP 100     // max size of operand or operator
-#define POSITIVE '0'  // signal that a positive number was found
-#define NEGATIVE '1'  // signal that a negative number was found
+#define NUMBER '0'    // signal that a number was found
 #define MAXVAL 100
 #define BUFSIZE 100
 
@@ -34,11 +33,8 @@ int main() {
 
   while((type = getop(s)) != EOF) {
     switch(type) {
-    case POSITIVE:
+    case NUMBER:
       push(atof(s));
-      break;
-    case NEGATIVE:
-      push(-1.0 * atof(s));
       break;
     case '+':
       push(pop() + pop());
@@ -117,23 +113,11 @@ double pop(void) {
  */
 
 int getop(char s[]) {
-  int i, c, next;
-  int sign = 1;
+  int i, c;
 
   while((s[0] = c = getch()) == ' ' || c == '\t') {}
 
   s[1] = '\0';
-
-  // negative number starting
-
-  if(c == '-') {
-    if(isdigit(next = getch())) {
-      s[0] = c = next;
-      sign = -1;
-    } else {
-      ungetch(next);
-    }
-  }
 
   if(!isdigit(c) && c != '.') { // not a number
     return c;
@@ -160,7 +144,7 @@ int getop(char s[]) {
     ungetch(c);
   }
 
-  return sign > 0 ? POSITIVE : NEGATIVE;
+  return NUMBER;
 }
 
 /*
