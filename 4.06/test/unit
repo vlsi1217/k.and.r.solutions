@@ -1,0 +1,58 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "calculator"
+
+it_should_add() {
+  assert_calculates 4 '2 2 +'
+}
+
+it_should_add_decimals() {
+  assert_calculates 4.4 '2.1 2.3 +'
+}
+
+it_should_multiply() {
+  assert_calculates 6 '2 3 *'
+}
+
+it_should_subtract() {
+  assert_calculates 1 '3 2 -'
+}
+
+it_should_divide() {
+  assert_calculates 2 '10 5 /'
+}
+
+it_should_divide_decimals() {
+  assert_calculates 10 '1 0.1 /'
+}
+
+it_should_evaluate_compound_expression() {
+  assert_calculates 0 '10 5 / 3 2 * 6 -'
+}
+
+it_should_support_modulo() {
+  assert_calculates 1 '10 3 %'
+}
+
+it_should_take_powers() {
+  assert_calculates 1024 '2 10 ^'
+}
+
+it_should_calculate_sin() {
+  assert_calculates 1 '1.5707963267949 S'
+}
+
+it_should_calculate_e() {
+  assert_calculates 2.7182818 '1 E'
+}
+
+it_should_assign_result() {
+  assert_calculates 2 "$(printf '1 sa\n1 a +\n')"
+}
+
+it_should_save_last_result_into_z() {
+  assert_calculates 104 "$(printf '13 13 +\n3 1 + ~ *\n')"
+}
+
