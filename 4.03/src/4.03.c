@@ -4,8 +4,7 @@
 #include <math.h>
 
 #define MAXOP 100     // max size of operand or operator
-#define POSITIVE '0'  // signal that a positive number was found
-#define NEGATIVE '1'  // signal that a negative number was found
+#define NUMBER '0'    // signal that a number was found
 #define MAXVAL 100
 #define BUFSIZE 100
 
@@ -34,11 +33,8 @@ int main() {
 
   while((type = getop(s)) != EOF) {
     switch(type) {
-    case POSITIVE:
+    case NUMBER:
       push(atof(s));
-      break;
-    case NEGATIVE:
-      push(-1.0 * atof(s));
       break;
     case '+':
       push(pop() + pop());
@@ -51,8 +47,7 @@ int main() {
       push(pop() - op2);
       break;
     case '/':
-      op2 = pop();
-      if(op2 != 0.0) {
+      if((op2 = pop())) {
         push(pop() / op2);
       } else {
         printf("error: zero divisor\n");
@@ -80,7 +75,7 @@ int main() {
  */
 
 void push(double f) {
-  if (sp < MAXVAL) {
+  if(sp < MAXVAL) {
     val[sp++] = f;
   } else {
     printf("error: stack full, can't push %g\n", f);
@@ -93,7 +88,7 @@ void push(double f) {
  */
 
 double pop(void) {
-  if (sp > 0) {
+  if(sp > 0) {
     return val[--sp];
   } else {
     printf("error: stack empty\n");
@@ -108,34 +103,30 @@ double pop(void) {
 
 int getop(char s[]) {
   int i, c, next;
-  int sign = 1;
 
   while((s[0] = c = getch()) == ' ' || c == '\t') {}
 
   s[1] = '\0';
+  i = 0;
 
-  // negative number starting
+  // negative numbers
 
   if(c == '-') {
     if(isdigit(next = getch())) {
-      s[0] = c = next;
-      sign = -1;
-    } else {
-      ungetch(next);
+      c = next;
     }
+
+    ungetch(next);
   }
 
   if(!isdigit(c) && c != '.') { // not a number
     return c;
   }
 
-  i = 0;
-
   // collect remaining integer part
 
   if(isdigit(c)) {
-    while(isdigit(s[++i] = c = getch())) {
-    }
+    while(isdigit(s[++i] = c = getch())) {}
   }
 
   // collect fraction part
@@ -150,7 +141,7 @@ int getop(char s[]) {
     ungetch(c);
   }
 
-  return sign > 0 ? POSITIVE : NEGATIVE;
+  return NUMBER;
 }
 
 /*
