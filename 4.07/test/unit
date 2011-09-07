@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "ungets"
+
+it_should_echo() {
+  assert_repeats "lorem ipsum dolor sit amet"
+}
+
