@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+assert_repeats() {
+  local input="$1"
+
+  echo "$input" | 4.08 | grep "^${input}$" || {
+    echo error: $(echo "$input" | 4.08), not "$input"
+    false
+  }
+}
+
