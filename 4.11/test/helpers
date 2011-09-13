@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_calculates() {
+  local expected="$1"
+  local expression="$2"
+
+  echo "$expression" | 4.11 | grep "^${expected}$" || {
+    echo  error: $(echo "$expression" | 4.11), not $expected
+    false
+  }
+}
+
