@@ -63,11 +63,6 @@ unit=$name/test/unit
 echo creating basic structure
 mkdir -p $name/{bin,src,test}
 
-# build script
-
-echo creating build script
-cp config/Makefile $build
-
 # suite script
 
 echo creating suite script
@@ -80,6 +75,12 @@ echo creating auto script
 cp config/auto $auto
 
 # once
+
+if ! test -f $build
+  then
+    echo creating build script
+    cp config/Makefile $build
+fi
 
 if ! test -f $helpers
   then
