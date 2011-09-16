@@ -5,7 +5,6 @@ LDFLAGS = -g -lm
 MAIN = bin/4.11
 LIBOBJECTS = \
 	src/stack.o \
-	src/getch.o \
 	src/calculator.o \
 	src/main.o
 

@@ -7,8 +7,8 @@
 void push(double);
 double pop(void);
 
-int sp = 0;           // next free stack position
-double val[MAXVAL];   // value stack
+static int sp = 0;           // next free stack position
+static double val[MAXVAL];   // value stack
 
 /*
  * Push f onto value stack

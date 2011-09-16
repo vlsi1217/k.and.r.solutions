@@ -32,3 +32,7 @@ it_should_evaluate_compound_expression() {
   assert_calculates 0 '10 5 / 3 2 * 6 -'
 }
 
+it_should_not_swallow_lookahead() {
+  assert_calculates 30 '10 10+10+'
+}
+

@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <math.h>
 
 #include "calculator.h"
 #include "stack.h"
-#include "getch.h"
+
+#define BOF -129
 
 /*
  *  Apply an operation to the stack
@@ -51,35 +51,43 @@ void applyop(char type, char operation[]) {
  */
 
 int getop(char s[]) {
-  int i, c;
+  static int c = BOF;
+  int i;
 
-  while((s[0] = c = getch()) == ' ' || c == '\t') {}
+  // remove whitespace
+
+  while(c == BOF || c == ' ' || c == '\t') {
+   s[0] = c = getchar();
+  }
 
   s[1] = '\0';
 
   if(!isdigit(c) && c != '.') { // not a number
-    return c;
+    int op = c;
+    c = getchar();
+
+    return op;
   }
 
   i = 0;
 
   // collect remaining integer part
 
-  if(isdigit(c)) {
-    while(isdigit(s[++i] = c = getch())) {}
+  while(isdigit(c)) {
+    s[++i] = c = getchar();
   }
 
   // collect fraction part
 
-  if (c == '.') {
-    while(isdigit(s[++i] = c = getch())) {}
+  if(c == '.') {
+    s[++i] = c = getchar();
+  }
+
+  while(isdigit(c)) {
+    s[++i] = c = getchar();
   }
 
   s[i] = '\0';
-
-  if(c != EOF) {
-    ungetch(c);
-  }
 
   return NUMBER;
 }
