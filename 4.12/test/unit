@@ -1,0 +1,15 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "recursive iota"
+
+it_should_return_input() {
+  assert_unchanged 12
+}
+
+it_should_return_negative() {
+  assert_unchanged -12
+}
+
+

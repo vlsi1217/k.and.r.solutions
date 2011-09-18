@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_unchanged() {
+  local input="$1"
+  local expected="$input"
+
+  echo -e "$input" | 4.12 | grep "^${expected}$" || {
+    echo  error: \'$(echo -e "$input" | 4.12)\', not "$expected"
+    false
+  }
+}
+
