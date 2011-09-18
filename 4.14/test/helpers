@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+assert_equal() {
+  local input="$1"
+  local expected="$2"
+
+  printf "$input" | 4.14 | grep "^${expected}$" || {
+    echo  error: $(printf "$input" | 4.14), not "$expected"
+    false
+  }
+}
+

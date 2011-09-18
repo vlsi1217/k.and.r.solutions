@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "argument switcher"
+
+it_should_reverse() {
+  assert_equal ab ba
+}
+
