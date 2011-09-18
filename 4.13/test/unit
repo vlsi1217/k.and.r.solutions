@@ -1,0 +1,10 @@
+#!/usr/bin/env roundup
+
+. helpers
+
+describe "recursive reverser"
+
+it_should_reverse() {
+  assert_equals 123 321
+}
+
